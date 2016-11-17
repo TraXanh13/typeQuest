@@ -1,5 +1,5 @@
 package typeQuest;
 
-public class Rooms {
+public class Room {
 
 }
