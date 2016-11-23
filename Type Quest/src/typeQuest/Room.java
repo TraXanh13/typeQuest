@@ -2,6 +2,12 @@ package typeQuest;
 
 public class Room {
 	String des = "";
-	Map[] room = new Map[33];
-	Map[] hidden = new Map[8];
+
+	Room(String des) {
+		this.des = des;
+	}
+
+	public String toString(){
+		return des;
+	}
 }

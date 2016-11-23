@@ -3,18 +3,23 @@ package typeQuest;
 public class Main {
 	public static Player p = new Player();
 	static String choice = "";
-	public static Room r = new Room();
+	static Room[] rooms = new Room[8];
 	
 	public static void main(String[] args) {
 		start();
-		System.out.println("I wish I had written a game :/");
+		intialize();
+		System.out.println(rooms[0]);
+		System.out.println("I wish I had written a game :/");		
 	}
-	
+	public static void intialize(){
+		rooms[0]= new Room("input stuff here");
+	}
+
 	public static void hitEnter(){
 		System.out.println("\n-Hit Enter to Continue-");
 		Keyboard.keyb.nextLine();
 	}
-	
+
 	public static void start(){
 		System.out.println("Welcome to Type Quest!");
 		do{
