@@ -1,7 +1,7 @@
 package typeQuest;
 
 public class Room {
-	String des = "";
+	String des = ""; //the description of the rooms
 
 	Room(String des) {
 		this.des = des;

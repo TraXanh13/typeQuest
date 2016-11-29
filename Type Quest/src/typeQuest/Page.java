@@ -1,8 +1,8 @@
 package typeQuest;
 
 public class Page {
-	String unfold = "";
-
+	String unfold = ""; //The description of the page
+	
 	Page(String unfold) {
 		this.unfold = unfold;
 	}

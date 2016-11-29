@@ -28,10 +28,13 @@ public class Main {
 			hitEnter();
 		}
 		storyBegins();
-		System.out.println(rooms[0]); //TODO: Add the different paths he could go
+		do{
+			System.out.println(rooms[0]);//TODO: Add the different paths he could go
+			choice = Keyboard.keyb.nextLine();
+		}while(!choice.equalsIgnoreCase("proceed") && !choice.equalsIgnoreCase("return") && !choice.equalsIgnoreCase("investigate") && !choice.equalsIgnoreCase("inventory"));
 	}
 
-
+	//TODO: Place the initialize in a different class
 	public static void intialize() {
 		pages[0] = new Page("========" + "\nPrologue" + "\n========"
 				+ "\nYou are a student learning fighting styles to one day be part of the"
@@ -51,7 +54,7 @@ public class Main {
 				+ "\n\nKing: \"Okay, what is your name?\" (Enter a name)");
 		pages[3] = new Page("45 minutes have passed when you decide it’s time to leave. "
 				+ "\nYou make your way to the front door when you are stopped by your mother"
-				+ "\n\nMother: \"" + p.name + ", please be careful. I will be praying for your safety. " //TODO: Have the mother read out the users name
+				+ "\n\nMother: \"" + p.name + ", please be careful. I will be praying for your safety. " //TODO: Have the mother read out the users name -Issue: The initializer is called before the player gets a name
 				+ "\nI have also went out and bought this for you.\""
 				+ "\n\nYou have obtained: \n+1 Poison Antidote \n+1 Paralyze Antidote \n+1 Awakening Spell \n+1 Potion" //TODO: Insert a DDS to add items to the inventory
 				+ "\n\nYou then head out to the front gate where you meet a delivery man holding a package");
@@ -97,13 +100,11 @@ public class Main {
 	}
 
 
-	/*
-	 * The start of the Journey
-	 */
+	//The start of the journey
 	public static void storyBegins(){
 		System.out.println("===========" + "\nStory Begin" + "\n===========");
 		do{
-			System.out.println("\nYou are well prepared for adventure ahead. Are you ready to proceed? \n(Type “yes” or “no”)");
+			System.out.println("You are well prepared for adventure ahead. Are you ready to proceed? \n(Type “yes” or “no”)");
 			choice = Keyboard.keyb.nextLine();
 		}while(!choice.equalsIgnoreCase("yes") && !choice.equalsIgnoreCase("no"));
 		if(choice.equalsIgnoreCase("no")){
@@ -114,11 +115,3 @@ public class Main {
 		}
 	}
 }
-
-
-
-
-
-
-
-
