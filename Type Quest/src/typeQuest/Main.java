@@ -1,22 +1,25 @@
 package typeQuest;
 
+
 public class Main {
 	public static Player p = new Player();
 	static String choice = "";
 	static Room[] rooms = new Room[41];
 	static Page[] pages = new Page[12];
 
+
 	public static void main(String[] args) {
 		start();
 		intialize();
-		for (int i = 0; i <= 3; i++) {
+		for (int i = 0; i <= 4; i++) {
 			System.out.println(pages[i]);
-			if(i == 2){
+			if (i == 2) {
 				p.name = Keyboard.keyb.nextLine();
-				do{
+				do {
 					System.out.println("King: \"Okay " + p.name + ", what is your profession?\"(Warrior, Rogue, Mage)");
 					p.role = Keyboard.keyb.nextLine();
-				}while(!p.role.equalsIgnoreCase("warrior") && !p.role.equalsIgnoreCase("rogue") && !p.role.equalsIgnoreCase("mage"));
+				} while (!p.role.equalsIgnoreCase("warrior") && !p.role.equalsIgnoreCase("rogue")
+						&& !p.role.equalsIgnoreCase("mage"));
 				System.out.println("King: \"A " + p.role + "? Okay, I will get my finest equipment for you. "
 						+ "\nMeet my delivery man at the front gate in the next hour.\""
 						+ "\n\nThe celebration comes to an end and you head home to "
@@ -24,8 +27,10 @@ public class Main {
 			}
 			hitEnter();
 		}
-		System.out.println("I wish I had written a game :/");
+		storyBegins();
+		System.out.println(rooms[0]); //TODO: Add the different paths he could go
 	}
+
 
 	public static void intialize() {
 		pages[0] = new Page("========" + "\nPrologue" + "\n========"
@@ -46,18 +51,29 @@ public class Main {
 				+ "\n\nKing: \"Okay, what is your name?\" (Enter a name)");
 		pages[3] = new Page("45 minutes have passed when you decide it’s time to leave. "
 				+ "\nYou make your way to the front door when you are stopped by your mother"
-				+ "\n\nMother: \"Joey the Grape, please be careful. I will be praying for your safety. "
+				+ "\n\nMother: \"" + p.name + ", please be careful. I will be praying for your safety. " //TODO: Have the mother read out the users name
 				+ "\nI have also went out and bought this for you.\""
-				+ "\n\nYou have obtained: \n+1 Poison Antidote \n+1 Paralyze Antidote \n+1 Awakening Spell \n+1 Potion"
+				+ "\n\nYou have obtained: \n+1 Poison Antidote \n+1 Paralyze Antidote \n+1 Awakening Spell \n+1 Potion" //TODO: Insert a DDS to add items to the inventory
 				+ "\n\nYou then head out to the front gate where you meet a delivery man holding a package");
-		rooms[0] = new Room("input stuff here");
+		pages[4] = new Page("Delivery Man: \"This is yours\"" + "\n\nYou: \"Thank you\""
+				+ "\n\nThe delivery man leaves and you open the package. There is a note."
+				+ "\n\n\"Here is the finest equipment I could find for you. It is very unlikely that you "
+				+ "\nwill find anything else during your quest. Be sure you come back with my daughter, "
+				+ "\nI am counting on you.\"" + "\n-The King" + "\n\nYou put on the equipment");
+		rooms[0] = new Room("\nYou are now in the woods outside your town following the footprints left behind. Should we \"proceed\", \"return\", or \"investigate\"?");
 	}
+
 
 	public static void hitEnter() {
 		System.out.println("\n-Hit Enter to Continue-");
 		Keyboard.keyb.nextLine();
 	}
 
+
+	/*
+	 * Main menu of the game
+	 * Help options
+	 */
 	public static void start() {
 		System.out.println("Welcome to Type Quest!");
 		do {
@@ -76,7 +92,33 @@ public class Main {
 							+ "\nThe console what tell you what to do for the rest of the game");
 			hitEnter();
 
+
 		}
 	}
 
+
+	/*
+	 * The start of the Journey
+	 */
+	public static void storyBegins(){
+		System.out.println("===========" + "\nStory Begin" + "\n===========");
+		do{
+			System.out.println("\nYou are well prepared for adventure ahead. Are you ready to proceed? \n(Type “yes” or “no”)");
+			choice = Keyboard.keyb.nextLine();
+		}while(!choice.equalsIgnoreCase("yes") && !choice.equalsIgnoreCase("no"));
+		if(choice.equalsIgnoreCase("no")){
+			System.out.println("You: \"I don't think I have any time to waste, I should leave right away\""
+					+ "\n\n*Your hero leaves anyway*");
+		}else{
+			System.out.println("\n*Your hero leaves Northbury*");
+		}
+	}
 }
+
+
+
+
+
+
+
+
