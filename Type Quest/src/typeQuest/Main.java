@@ -32,6 +32,14 @@ public class Main {
 			System.out.println(rooms[0]);//TODO: Add the different paths he could go
 			choice = Keyboard.keyb.nextLine();
 		}while(!choice.equalsIgnoreCase("proceed") && !choice.equalsIgnoreCase("return") && !choice.equalsIgnoreCase("investigate") && !choice.equalsIgnoreCase("inventory"));
+		if(choice.equalsIgnoreCase("return")){
+			System.out.println("We've only just begun, you cannot go back already!");
+		}else if(choice.equalsIgnoreCase("investigate")){
+			do{
+				System.out.println(pages[5]);
+				choice = Keyboard.keyb.nextLine();
+			}while(!choice.equalsIgnoreCase("bush") && !choice.equalsIgnoreCase("proceed"));
+		}
 	}
 
 	//TODO: Place the initialize in a different class
@@ -63,7 +71,11 @@ public class Main {
 				+ "\n\n\"Here is the finest equipment I could find for you. It is very unlikely that you "
 				+ "\nwill find anything else during your quest. Be sure you come back with my daughter, "
 				+ "\nI am counting on you.\"" + "\n-The King" + "\n\nYou put on the equipment");
-		rooms[0] = new Room("\nYou are now in the woods outside your town following the footprints left behind. Should we \"proceed\", \"return\", or \"investigate\"?");
+		pages[5] = new Page("You search the area to find the footprints are similar to a human’s but isn’t."
+				+ "/nYou decipher this because no human could possible have size 20 shoes."
+				+ "/nYou also notice an odd looking bush and a faint line of slime."
+				+ "\n\nWhat do you want to do? (Check the “bush”, “proceed” or “return”)");
+		rooms[0] = new Room("\nYou are now in the woods outside your town following the footprints left behind. \nShould we \"proceed\", \"return\", or \"investigate\"?");
 	}
 
 
