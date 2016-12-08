@@ -1,11 +1,18 @@
 package typeQuest;
 
-public class Player {
+public class Player extends Character {
 	String name;
 	String role;
-	int health;
-	int atkDmg; 
 	int block;
-	int level;
 	int experience;
+	int money;
+	
+	public String getName(){
+		return name;
+	}
+	
+	// @Override
+	public String toString() {
+		return name + super.toString() + "Money: $" + money;
+	}
 }

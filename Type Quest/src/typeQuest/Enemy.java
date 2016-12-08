@@ -1,15 +1,15 @@
 package typeQuest;
 
-public class Enemy {
+public class Enemy extends Character {
 	String type;
-	int health;
-	int atk;
-	int level;
+	boolean money;
 
-	public Enemy(String type, int health, int atk, int level) {
-		this.type = type;
-		this.health = health;
-		this.atk = atk;
-		this.level = level;
+	public String getName() {
+		return type;
+	}
+
+	// @Override
+	public String toString() {
+		return type + super.toString();
 	}
 }
