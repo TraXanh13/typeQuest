@@ -3,13 +3,14 @@ package typeQuest;
 
 public class Main {
 	public static Player p = new Player();
+	public static Enemy neMe = new Enemy();
 	static String choice = "";
 	static Room[] rooms = new Room[41];
 	static Page[] pages = new Page[12];
 
 
 	public static void main(String[] args) {
-		start();
+		/*start();
 		initialize();
 		for (int i = 0; i <= 4; i++) {
 			System.out.println(pages[i]);
@@ -35,16 +36,15 @@ public class Main {
 			}
 			hitEnter();
 		}
-		storyBegins();
-		do {
-			System.out.println(rooms[0]);
-			choice = Keyboard.keyb.nextLine();
-		} while (!choice.equalsIgnoreCase("proceed")
-				&& !choice.equalsIgnoreCase("investigate")
-				&& !choice.equalsIgnoreCase("inventory"));
-		// TODO: Add the different paths he could go
+		storyBegins();*/
+		neMe.type = "Not a monster";
+		neMe.damage = 12;
+		neMe.health = 10;
+		neMe.level = 1;
+		neMe.money = true;
+		System.out.println(p);
+		System.out.println(neMe);
 	}
-
 
 	// TODO: Place the initialize in a different class
 	public static void initialize() {
