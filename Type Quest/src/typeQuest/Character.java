@@ -1,12 +1,24 @@
 package typeQuest;
 
 public class Character {
+	public static Player p = new Player();
+	public static Enemy neMe = new Enemy();
 	int health;
 	int damage;
 	int level;
 
-	public void battle(Character oppenent) {
+	public void battle() {
+		String battleChoice = "";
+		System.out.println("You have encountered a " + neMe + " >> " + "HP:" + healthBar() + " Atk:" + neMe.damage);
+		do{
+			System.out.println("What would you like to do?\nAttack\nBlock");
+			battleChoice = Keyboard.keyb.nextLine();
+		}while(!battleChoice.equalsIgnoreCase("attack") && !battleChoice.equalsIgnoreCase("block"));
+		
+	}
 
+	public String getName() {
+		return "";
 	}
 
 	public String healthBar() {
@@ -19,7 +31,7 @@ public class Character {
 
 	public String toString() {
 		String temp = "";
-		temp += " Lv." + level + " >> Dmg:" + damage + "\n" + healthBar();
+		temp += "Lv." + level + " ";
 		return temp;
 	}
 }

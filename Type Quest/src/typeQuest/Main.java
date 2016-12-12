@@ -1,49 +1,37 @@
 package typeQuest;
 
-
 public class Main {
+	public static Character character = new Character();
 	public static Player p = new Player();
 	public static Enemy neMe = new Enemy();
 	static String choice = "";
 	static Room[] rooms = new Room[41];
 	static Page[] pages = new Page[12];
 
-
 	public static void main(String[] args) {
-		/*start();
-		initialize();
-		for (int i = 0; i <= 4; i++) {
-			System.out.println(pages[i]);
-			if (i == 2) {
-				p.name = Keyboard.keyb.nextLine();
-				do {
-					System.out
-							.println("King: \"Okay "
-									+ p.name
-									+ ", what is your profession?\"(Warrior, Rogue, Mage)");
-					p.role = Keyboard.keyb.nextLine();
-				} while (!p.role.equalsIgnoreCase("warrior")
-						&& !p.role.equalsIgnoreCase("rogue")
-						&& !p.role.equalsIgnoreCase("mage"));
-				System.out
-						.println("King: \"A "
-								+ p.role
-								+ "? Okay, I will get my finest equipment for you. "
-								+ "\nMeet my delivery man at the front gate in the next hour.\""
-								+ "\n\nThe celebration comes to an end and you head home to "
-								+ "\nprepare for your upcoming adventure.");
-				initialize();
-			}
-			hitEnter();
-		}
-		storyBegins();*/
-		neMe.type = "Not a monster";
-		neMe.damage = 12;
-		neMe.health = 10;
-		neMe.level = 1;
+		/*
+		 * start(); initialize(); for (int i = 0; i <= 4; i++) {
+		 * System.out.println(pages[i]); if (i == 2) { p.name =
+		 * Keyboard.keyb.nextLine(); do { System.out .println("King: \"Okay " +
+		 * p.name + ", what is your profession?\"(Warrior, Rogue, Mage)");
+		 * p.role = Keyboard.keyb.nextLine(); } while
+		 * (!p.role.equalsIgnoreCase("warrior") &&
+		 * !p.role.equalsIgnoreCase("rogue") &&
+		 * !p.role.equalsIgnoreCase("mage")); System.out .println("King: \"A " +
+		 * p.role + "? Okay, I will get my finest equipment for you. " +
+		 * "\nMeet my delivery man at the front gate in the next hour.\"" +
+		 * "\n\nThe celebration comes to an end and you head home to " +
+		 * "\nprepare for your upcoming adventure."); initialize(); }
+		 * hitEnter(); } storyBegins();
+		 */
+		neMe.type = "Jeffery";
+		neMe.level = 1000;
+		neMe.damage = (int) (Math.random() * (3 * neMe.level) + 1);
+		neMe.health = (int) (Math.random() * neMe.level + 1);
 		neMe.money = true;
 		System.out.println(p);
 		System.out.println(neMe);
+		System.out.println(neMe.damage);
 	}
 
 	// TODO: Place the initialize in a different class
@@ -72,7 +60,9 @@ public class Main {
 		pages[3] = new Page(
 				"45 minutes have passed when you decide it’s time to leave. "
 						+ "\nYou make your way to the front door when you are stopped by your mother"
-						// TODO: Have the mother read out the users name -Issue: The initializer is called before the player gets a name
+						// TODO: Have the mother read out the users name -Issue:
+						// The initializer is called before the player gets a
+						// name
 						+ "\n\nMother: \""
 						+ p.name
 						+ ", please be careful. I will be praying for your safety. "
@@ -88,65 +78,80 @@ public class Main {
 						+ "\nwill find anything else during your quest. Be sure you come back with my daughter, "
 						+ "\nI am counting on you.\"" + "\n-The King"
 						+ "\n\nYou put on the equipment");
-		pages[5] = new Page("\nYou had decided to go down Shadow Cavern. Just like the name, the cavern looks too dark to see anything"
-				+ "\nYou can hear the drops of water hitting the floor but other than that, it is quiet but you can sense danger. Be prepared!");
-		//Rooms
-		rooms[0] = new Room("\nYou are now in the woods outside your town following the footprints left behind. "
-				+ "\nShould we \"proceed\" or \"investigate\"?");
-		//First fork in the road
-		rooms[1] = new Room("\nThere is now a fork in the road; one path leads to Shadow Cavern, the other leads to Starlight path"
-				+ "\nShould we go down \"Shadow Cavern\" or \"Starlight Path\"?");
-		//Shadow Cavern
-		rooms[2] = new Room("\nThe cavern surrounds you, you can't stop the feeling of being watched"
-				+ "\nChills are starting to run down your back. Maybe you've made a bad decision...");
-		rooms[3] = new Room("\nYour suspescion was correct, a dwarf jumps out at you trying to steal your money and equipment"
-				+ "\nThis means WAR!");
-		rooms[4] = new Room("\nThe path keeps getting darker the further you go"
-				+ "\nAlthough you killed the dwarf, you still feel like you are being watched"
-				+ "\nThe feeling keeps getting worst, what could it be?"
-				+ "\nShould we \"proceed\" or \"investigate\"?");
-		rooms[5] = new Room("\nYou are in an open area of the cavern, here you are able to see your surroundings"
-				+ "\nThe cave looks damp but other than that, nothing seems out of place"
-				+ "\nYou start to hear rustling and the sounds of someone walking up to you"
-				+ "\n*It steps into the light*"
-				+ "\nIt's a Loogaroo! Quickly, kill it before it can suck all your blood!");
-		rooms[6] = new Room("\nIt looks like it is just a long dark walkway from here..."
-				+ "\nYou have a feeling that you are being watched more closely... WHAT IS IT?!"
-				+ "\nShould we \"proceed\" or \"investigate\"?");
-		rooms[7] = new Room("\nIt's another opening, but it is very dark in here. It makes it kind of hard to see"
-				+ "\nA rock hits your shoulder, you look up"
-				+ "\nAn Ahool swoops down befores you and begins to attack, fight your way out of this one");
-		rooms[8] = new Room("\nThere is nothing new with the cave... Still dark and damp..."
-				+ "\nAnd you still feel like you are being watched... I'm not sure what you think would happen"
-				+ "\nShould we \"proceed\" or \"investigate\"?");
-		rooms[9] = new Room("\nYou come across a body of water within the cave, if you follow it you can get out!"
-				+ "\n*You begin to follow the water when you hear a splash from behind*"
-				+ "\nYou turn to see a lindworm heading your direction!");
-		rooms[10] = new Room("\nYou continue to follow the water into the unknown darkness"
-				+ "\nYou still have the unsettling feeling that something big has yet to come"
-				+ "\nShould we \"proceed\" or \"investigate\"?");
-		rooms[11] = new Room("\nYou can see a faint light coming from the distance, you must be nearing the end!"
-				+ "\n*Your hero sprints to the end"
-				+ "\n*THUD*"
-				+ "\nYou hit some soft object and get propelled backwards"
-				+ "\nA Cerastes stands before you");
-		rooms[12] = new Room("\nYou made it though the caves system in one piece!"
-				+ "\nYou are more than half way to the Jack-E's castle");
-		//Starlight Path
+		pages[5] = new Page(
+				"\nYou had decided to go down Shadow Cavern. Just like the name, the cavern looks too dark to see anything"
+						+ "\nYou can hear the drops of water hitting the floor but other than that, it is quiet but you can sense danger. Be prepared!");
+		// Rooms
+		rooms[0] = new Room(
+				"\nYou are now in the woods outside your town following the footprints left behind. "
+						+ "\nShould we \"proceed\" or \"investigate\"?");
+		// First fork in the road
+		rooms[1] = new Room(
+				"\nThere is now a fork in the road; one path leads to Shadow Cavern, the other leads to Starlight path"
+						+ "\nShould we go down \"Shadow Cavern\" or \"Starlight Path\"?");
+		// Shadow Cavern
+		rooms[2] = new Room(
+				"\nThe cavern surrounds you, you can't stop the feeling of being watched"
+						+ "\nChills are starting to run down your back. Maybe you've made a bad decision...");
+		rooms[3] = new Room(
+				"\nYour suspescion was correct, a dwarf jumps out at you trying to steal your money and equipment"
+						+ "\nThis means WAR!");
+		rooms[4] = new Room(
+				"\nThe path keeps getting darker the further you go"
+						+ "\nAlthough you killed the dwarf, you still feel like you are being watched"
+						+ "\nThe feeling keeps getting worst, what could it be?"
+						+ "\nShould we \"proceed\" or \"investigate\"?");
+		rooms[5] = new Room(
+				"\nYou are in an open area of the cavern, here you are able to see your surroundings"
+						+ "\nThe cave looks damp but other than that, nothing seems out of place"
+						+ "\nYou start to hear rustling and the sounds of someone walking up to you"
+						+ "\n*It steps into the light*"
+						+ "\nIt's a Loogaroo! Quickly, kill it before it can suck all your blood!");
+		rooms[6] = new Room(
+				"\nIt looks like it is just a long dark walkway from here..."
+						+ "\nYou have a feeling that you are being watched more closely... WHAT IS IT?!"
+						+ "\nShould we \"proceed\" or \"investigate\"?");
+		rooms[7] = new Room(
+				"\nIt's another opening, but it is very dark in here. It makes it kind of hard to see"
+						+ "\nA rock hits your shoulder, you look up"
+						+ "\nAn Ahool swoops down befores you and begins to attack, fight your way out of this one");
+		rooms[8] = new Room(
+				"\nThere is nothing new with the cave... Still dark and damp..."
+						+ "\nAnd you still feel like you are being watched... I'm not sure what you think would happen"
+						+ "\nShould we \"proceed\" or \"investigate\"?");
+		rooms[9] = new Room(
+				"\nYou come across a body of water within the cave, if you follow it you can get out!"
+						+ "\n*You begin to follow the water when you hear a splash from behind*"
+						+ "\nYou turn to see a lindworm heading your direction!");
+		rooms[10] = new Room(
+				"\nYou continue to follow the water into the unknown darkness"
+						+ "\nYou still have the unsettling feeling that something big has yet to come"
+						+ "\nShould we \"proceed\" or \"investigate\"?");
+		rooms[11] = new Room(
+				"\nYou can see a faint light coming from the distance, you must be nearing the end!"
+						+ "\n*Your hero sprints to the end"
+						+ "\n*THUD*"
+						+ "\nYou hit some soft object and get propelled backwards"
+						+ "\nA Cerastes stands before you");
+		rooms[12] = new Room(
+				"\nYou made it though the caves system in one piece!"
+						+ "\nYou are more than half way to the Jack-E's castle");
+		// Starlight Path
 		rooms[13] = new Room("");
 		rooms[14] = new Room("");
 		rooms[15] = new Room("");
 	}
 
-
+	/**
+	 * Forces the user to interact Proceeds as long as the user hits enter
+	 */
 	public static void hitEnter() {
 		System.out.println("\n-Hit Enter to Continue-");
 		Keyboard.keyb.nextLine();
 	}
 
-
-	/*
-	 * Main menu of the game Help options
+	/**
+	 * Main menu Starts the game or Print out the help option
 	 */
 	public static void start() {
 		System.out.println("Welcome to Type Quest!");
@@ -168,12 +173,12 @@ public class Main {
 							+ "\nThe console what tell you what to do for the rest of the game");
 			hitEnter();
 
-
 		}
 	}
 
-
-	// The start of the journey
+	/**
+	 * Forces the user to proceed
+	 */
 	public static void storyBegins() {
 		System.out.println("===========" + "\nStory Begin" + "\n===========");
 		do {
@@ -191,5 +196,3 @@ public class Main {
 		}
 	}
 }
-
-

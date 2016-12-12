@@ -10,6 +10,6 @@ public class Enemy extends Character {
 
 	// @Override
 	public String toString() {
-		return type + super.toString();
+		return super.toString() + type;
 	}
 }
