@@ -29,6 +29,7 @@ public class Main {
 		System.out.println(p);
 		System.out.println(neMe);
 		System.out.println("HP: " + neMe.health + " Atk " + neMe.damage);
+		character.battle();
 	}
 
 	// TODO: Place the initialize in a different class
