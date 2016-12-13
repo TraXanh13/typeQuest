@@ -17,10 +17,6 @@ public class Character {
 		
 	}
 
-	public String getName() {
-		return "";
-	}
-
 	public String healthBar() {
 		String hp = "Health:";
 		for (int i = 0; i < health; i++) {
