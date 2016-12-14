@@ -9,7 +9,9 @@ public class Main {
 
 	public static void main(String[] args) {
 		Item item = new Item(0, choice, choice, 0);
+		//Param (amount, type, description, price)
 		item.createTheGoodies(1, "Potion", "Heal by 3", 30);
+		System.out.println(item);
 		/*start();
 		initialize();
 		for (int i = 0; i <= 4; i++) {

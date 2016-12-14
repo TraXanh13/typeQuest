@@ -5,6 +5,12 @@ public class Character {
 	int damage;
 	int level;
 
+	/**
+	 * Battle sequence
+	 * Creates the atkdmg for the upcoming turn
+	 * Asks the user to attack or use inventory
+	 * 
+	 */
 	/*public void battle() {
 		int playerDmg;
 		int neMeDmg;
@@ -19,16 +25,20 @@ public class Character {
 			} while (!battleChoice.equalsIgnoreCase("attack") && !battleChoice.equalsIgnoreCase("inventory"));
 			if (battleChoice.equalsIgnoreCase("attack")) {
 				neMe.health -= playerDmg;
+				System.out.println(p.name + " used slash dealing " + playerDmg + "Atk\nThe " + neMe.type
+					+ " used tackle dealing " + neMeDmg + "Atk");
 				p.health -= neMe.damage;
 			} else {
 				// TODO: insert an inventory option
 			}
-			System.out.println(p.name + " used slash dealing " + playerDmg + "Atk\nThe " + neMe.type
-					+ " used tackle dealing " + neMeDmg + "Atk");
 			System.out.println("\n" + p + "\n" + neMe + "\n");
 		} while (neMe.health > 0);
 	}*/
 
+	/**
+	 * Print out the health in '*'
+	 * @return
+	 */
 	public String healthBar() {
 		String hp = "Health:";
 		for (int i = 0; i < health; i++) {
