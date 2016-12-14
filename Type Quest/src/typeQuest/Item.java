@@ -4,10 +4,6 @@ package typeQuest;
  * Creates the items that will be placed in an inventory
  */
 public class Item {
-	// Creates the max the player can carry
-	private int maxCarry = 20;
-	Item[] item = new Item[maxCarry];
-
 	// Properties of the item
 	int total;
 	int amount;
@@ -33,10 +29,11 @@ public class Item {
 	 * Constructor Creates the item with parameters passed from the main
 	 * Only creates item if there is space in the bag
 	 * 
+	 * explain what the params are
 	 * @param amount
 	 * @param type
 	 * @param description
-	 * @param Price
+	 * @param price
 	 */
 	public void createTheGoodies(int amount, String type, String description, int price) {
 		if (total < maxCarry) {
@@ -46,7 +43,10 @@ public class Item {
 		}
 	}
 
-	public String toString() {
-		return "you have " + item[0];
-	}
+	/*
+	 * public String toString() {
+	 * return "you have " + ;
+	 * }
+	 */
+		
 }

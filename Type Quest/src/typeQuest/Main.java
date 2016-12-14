@@ -35,6 +35,9 @@ public class Main {
 	}
 
 	// TODO: Place the initialize in a different class
+	/**
+	 * Adds a description for each area or set of the story
+	 */
 	public static void initialize() {
 		pages[0] = new Page("========" + "\nPrologue" + "\n========"
 				+ "\nYou are a student learning fighting styles to one day be part of the"
@@ -82,10 +85,10 @@ public class Main {
 		rooms[2] = new Room("\nThe cavern surrounds you, you can't stop the feeling of being watched"
 				+ "\nChills are starting to run down your back. Maybe you've made a bad decision...");
 		rooms[3] = new Room(
-				"\nYour suspescion was correct, a dwarf jumps out at you trying to steal your money and equipment"
+				"\nYour suspescion was correct, a Dwarf jumps out at you trying to steal your money and equipment"
 						+ "\nThis means WAR!");
 		rooms[4] = new Room("\nThe path keeps getting darker the further you go"
-				+ "\nAlthough you killed the dwarf, you still feel like you are being watched"
+				+ "\nAlthough you killed the Dwarf, you still feel like you are being watched"
 				+ "\nThe feeling keeps getting worst, what could it be?"
 				+ "\nShould we \"proceed\" or \"investigate\"?");
 		rooms[5] = new Room("\nYou are in an open area of the cavern, here you are able to see your surroundings"
@@ -104,7 +107,7 @@ public class Main {
 				+ "\nShould we \"proceed\" or \"investigate\"?");
 		rooms[9] = new Room("\nYou come across a body of water within the cave, if you follow it you can get out!"
 				+ "\n*You begin to follow the water when you hear a splash from behind*"
-				+ "\nYou turn to see a lindworm heading your direction!");
+				+ "\nYou turn to see a Lindworm heading your direction!");
 		rooms[10] = new Room("\nYou continue to follow the water into the unknown darkness"
 				+ "\nYou still have the unsettling feeling that something big has yet to come"
 				+ "\nShould we \"proceed\" or \"investigate\"?");

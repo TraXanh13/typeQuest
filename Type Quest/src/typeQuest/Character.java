@@ -32,7 +32,7 @@ public class Character {
 				// TODO: insert an inventory option
 			}
 			System.out.println("\n" + p + "\n" + neMe + "\n");
-		} while (neMe.health > 0);
+		} while (neMe.health > 0 ||);
 	}*/
 
 	/**
