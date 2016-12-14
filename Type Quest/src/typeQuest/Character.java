@@ -5,7 +5,7 @@ public class Character {
 	int damage;
 	int level;
 
-	public void battle() {
+	/*public void battle() {
 		int playerDmg;
 		int neMeDmg;
 		String battleChoice = "";
@@ -27,7 +27,7 @@ public class Character {
 					+ " used tackle dealing " + neMeDmg + "Atk");
 			System.out.println("\n" + p + "\n" + neMe + "\n");
 		} while (neMe.health > 0);
-	}
+	}*/
 
 	public String healthBar() {
 		String hp = "Health:";

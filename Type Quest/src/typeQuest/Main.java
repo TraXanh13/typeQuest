@@ -1,7 +1,6 @@
 package typeQuest;
 
 public class Main {
-	public static Character character = new Character();
 	public static Player p = new Player();
 	public static Enemy neMe = new Enemy();
 	static String choice = "";
@@ -9,7 +8,9 @@ public class Main {
 	static Page[] pages = new Page[12];
 
 	public static void main(String[] args) {
-		start();
+		Item item = new Item(0, choice, choice, 0);
+		item.createTheGoodies(1, "Potion", "Heal by 3", 30);
+		/*start();
 		initialize();
 		for (int i = 0; i <= 4; i++) {
 			System.out.println(pages[i]);
@@ -28,8 +29,7 @@ public class Main {
 		neMe.money = true;
 		System.out.println(p);
 		System.out.println(neMe);
-		System.out.println("HP: " + neMe.health + " Atk " + neMe.damage);
-		character.battle();
+		System.out.println("HP: " + neMe.health + " Atk " + neMe.damage);*/
 	}
 
 	// TODO: Place the initialize in a different class
@@ -56,9 +56,6 @@ public class Main {
 				+ "\nprepare for your upcoming adventure.");
 		pages[4] = new Page("45 minutes have passed when you decide it’s time to leave. "
 				+ "\nYou make your way to the front door when you are stopped by your mother"
-				// TODO: Have the mother read out the users name -Issue:
-				// The initializer is called before the player gets a
-				// name
 				+ "\n\nMother: \"" + p.name + ", please be careful. I will be praying for your safety. "
 				+ "\nI have also went out and bought this for you.\""
 				// TODO: Insert a DDS to add items to the inventory
