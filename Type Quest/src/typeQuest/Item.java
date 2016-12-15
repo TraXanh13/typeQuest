@@ -36,11 +36,7 @@ public class Item {
 	 * @param price
 	 */
 	public void createTheGoodies(int amount, String type, String description, int price) {
-		if (total < maxCarry) {
-			item[0] = new Item(amount, type, description, price);
-		} else {
-			System.out.println("You are carrying too much!");
-		}
+		
 	}
 
 	/*
