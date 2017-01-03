@@ -191,9 +191,9 @@ public class Main {
 	 * Print out the health in '*'
 	 * @return
 	 */
-	public String getPlayerHealthBar(Character Player) {
+	public String getPlayerHealthBar() {
 		String hp = "Health:";
-		for (int i = 0; i < Character.health; i++) {
+		for (int i = 0; i < p.health; i++) {
 			hp += '*';
 		}
 		return hp;
@@ -203,9 +203,9 @@ public class Main {
 	 * Print out the health in '*'
 	 * @return
 	 */
-	public String getEnemyHealthBar(Character Enemy) {
+	public String getEnemyHealthBar() {
 		String hp = "Health:";
-		for (int i = 0; i < Character.health; i++) {
+		for (int i = 0; i < neMe.health; i++) {
 			hp += '*';
 		}
 		return hp;
