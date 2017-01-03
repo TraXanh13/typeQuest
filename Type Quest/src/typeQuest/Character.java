@@ -1,7 +1,7 @@
 package typeQuest;
 
 public class Character {
-	static int health;
+	/*static int health;
 	static int damage;
 	int level;
 
@@ -9,5 +9,5 @@ public class Character {
 		String temp = "";
 		temp += "Lv." + level + " ";
 		return temp;
-	}
+	}*/
 }
