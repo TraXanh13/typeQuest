@@ -1,8 +1,8 @@
 package typeQuest;
 
 public class Character {
-	int health;
-	int damage;
+	static int health;
+	static int damage;
 	int level;
 
 	/**
@@ -11,29 +11,33 @@ public class Character {
 	 * Asks the user to attack or use inventory
 	 * 
 	 */
-	/*public void battle() {
+	/*public void battle(Character opponent) {
 		int playerDmg;
 		int neMeDmg;
 		String battleChoice = "";
 		do {
-			neMeDmg = (int) (Math.random() * (1.5 * neMe.damage) + 1);
-			playerDmg = (int) (Math.random() * (1.5 * p.damage) + 1);
-			System.out.println("You have encountered a " + neMe + " >> " + "HP:" + healthBar() + " Atk:" + neMe.damage);
+			neMeDmg = (int) (Math.random() * (1.5 * Enemy.damage) + 1);
+			playerDmg = (int) (Math.random() * (1.5 * Player.damage) + 1);
+			//System.out.println("You have encountered a " + neMe + " >> " + "HP:" + healthBar() + " Atk:" + neMe.damage);
 			do {
 				System.out.println("What would you like to do?\nAttack\nInventory");
 				battleChoice = Keyboard.keyb.nextLine();
 			} while (!battleChoice.equalsIgnoreCase("attack") && !battleChoice.equalsIgnoreCase("inventory"));
 			if (battleChoice.equalsIgnoreCase("attack")) {
-				neMe.health -= playerDmg;
-				System.out.println(p.name + " used slash dealing " + playerDmg + "Atk\nThe " + neMe.type
+				Enemy.health -= playerDmg;
+				System.out.println(Player.name + " used slash dealing " + playerDmg + "Atk\nThe " + Enemy.type
 					+ " used tackle dealing " + neMeDmg + "Atk");
-				p.health -= neMe.damage;
+				Player.health -= Enemy.damage;
 			} else {
 				// TODO: insert an inventory option
 			}
-			System.out.println("\n" + p + "\n" + neMe + "\n");
-		} while (neMe.health > 0 ||);
+			//System.out.println("\n" + Player + "\n" + Enemy + "\n");
+		} while (Enemy.health > 0 || Player.health > 0);
 	}*/
+	
+	public String getName() {
+		return "";
+	}
 
 	/**
 	 * Print out the health in '*'

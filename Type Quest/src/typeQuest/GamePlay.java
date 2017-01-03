@@ -45,7 +45,7 @@ public class GamePlay {
 	 * Forces the user to proceed
 	 */
 	public static void storyBegins() {
-		for (int i = 0; i <= 4; i++) {
+		for (int i = 0; i <= 5; i++) {
 			System.out.println(pages[i]);
 			if (i == 2) {
 				p.name = Keyboard.keyb.nextLine();
@@ -68,8 +68,8 @@ public class GamePlay {
 		}
 		do{
 			System.out.println(rooms[0]);
-			choice = Keyboard.keyb.nextLine("");
-		}while();
+			choice = Keyboard.keyb.nextLine();
+		}while(!choice.equalsIgnoreCase("proceed") && !choice.equalsIgnoreCase("investigate"));
 	}
 	
 	/**

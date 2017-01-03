@@ -1,7 +1,7 @@
 package typeQuest;
 
 public class Player extends Character {
-	String name;
+	static String name;
 	int experience = 0;
 	int money = 0;
 	
