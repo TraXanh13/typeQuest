@@ -1,12 +1,15 @@
 package typeQuest;
 
-public class Player extends Character{
+public class Player{
 	static String name;
 	int experience = 0;
 	int money = 0;
+	static int health;
+	static int damage;
+	int level;
 	
 	// @Override
 	public String toString() {
-		return super.toString() + name;
+		return "Lv." + level + " " + name;
 	}
 }
