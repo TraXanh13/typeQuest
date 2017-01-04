@@ -1,11 +1,8 @@
 package typeQuest;
 
-public class Enemy{
-	static String[] type = {"Slime", "Goblin", "Dwarf", "Loogaroo", "Ahool", "Lindworm", "Cerastes"};
+public class Enemy extends Character{
+	String type = "";
 	boolean money;
-	static int health;
-	static int damage;
-	int level;
 
 	// @Override
 	public String toString() {
