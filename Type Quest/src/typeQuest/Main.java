@@ -14,18 +14,11 @@ public class Main {
 	static Page[] pages = new Page[12];
 
 	public static void main(String[] args) {
-		/*
-		 * Characteristics for every enemy
-		 * neMe.money = false; 
-		 * neMe.type = ""; 
-		 * neMe.damage = (int) (Math.random() * (1.5 * 2) + 1); 
-		 * neMe.health = (int) (Math.random() * (1.5 * 3) + 8);
-		 */
-		//TODO: Remove this!!!! Only for testing purposes
+		// TODO: Remove this!!!! Only for testing purposes
 		p.health = 100;
 		p.damage = 100;
-		//p.health = (int) (Math.random() * (1.5 * 5) + 6);
-		//p.damage = (int) (Math.random() * (1.5 * 3) + 2);
+		// p.health = (int) (Math.random() * (1.5 * 5) + 6);
+		// p.damage = (int) (Math.random() * (1.5 * 3) + 2);
 		initialize();
 		mainMenu();
 	}
@@ -38,14 +31,16 @@ public class Main {
 		do {
 			System.out.println("Would you like to \"play\" or get \"help\"");
 			choice = Keyboard.keyb.nextLine();
-		} while (!choice.equalsIgnoreCase("play") && !choice.equalsIgnoreCase("help"));
+		} while (!choice.equalsIgnoreCase("play")
+				&& !choice.equalsIgnoreCase("help"));
 		if (choice.equalsIgnoreCase("help")) {
-			System.out.println("Follow your hero through battles to make way to the troll king and save the princess"
-					+ "\nKeep on the lookout for hidden passages along the way"
-					+ "\nThere will be some secret words you can type in order to open the path to the hidden passage");
+			System.out
+					.println("Follow your hero through battles to make way to the troll king and save the princess"
+							+ "\nKeep on the lookout for hidden passages along the way"
+							+ "\nThere will be some secret words you can type in order to open the path to the hidden passage");
 			hitEnter();
-			System.out.println(
-					"Be sure you are able to fight and keep your health up, You don't want to end the journey early"
+			System.out
+					.println("Be sure you are able to fight and keep your health up, You don't want to end the journey early"
 							+ "\nAt any point in the game, you can type \"inventory\" to open your bag to use the potions or antidotes you have picked up"
 							+ "\nIn your inventory, you will start with a potion (restores 3 health), and an antidote for every effect (Poison, sleep, and paralyze)"
 							+ "\nThe console what tell you what to do for the rest of the game");
@@ -69,7 +64,7 @@ public class Main {
 		for (int i = 0; i <= 5; i++) {
 			System.out.println(pages[i]);
 			if (i == 2) {
-				Player.name = Keyboard.keyb.nextLine();
+				p.name = Keyboard.keyb.nextLine();
 				initialize();
 			} else {
 				hitEnter();
@@ -77,52 +72,65 @@ public class Main {
 		}
 		System.out.println("===========" + "\nStory Begin" + "\n===========");
 		do {
-			System.out.println(
-					"You are well prepared for adventure ahead. Are you ready to proceed? \n(Type “yes” or “no”)");
+			System.out
+					.println("You are well prepared for adventure ahead. Are you ready to proceed? \n(Type “yes” or “no”)");
 			choice = Keyboard.keyb.nextLine();
-		} while (!choice.equalsIgnoreCase("yes") && !choice.equalsIgnoreCase("no"));
+		} while (!choice.equalsIgnoreCase("yes")
+				&& !choice.equalsIgnoreCase("no"));
 		if (choice.equalsIgnoreCase("no")) {
-			System.out.println("You: \"I don't think I have any time to waste, I should leave right away\""
-					+ "\n\n*Your hero leaves anyway*");
+			System.out
+					.println("You: \"I don't think I have any time to waste, I should leave right away\""
+							+ "\n\n*Your hero leaves anyway*");
 		} else {
 			System.out.println("\n*Your hero leaves Northbury*");
 		}
 		do {
 			System.out.println(rooms[0]);
 			choice = Keyboard.keyb.nextLine();
-		} while (!choice.equalsIgnoreCase("proceed") && !choice.equalsIgnoreCase("investigate"));
+		} while (!choice.equalsIgnoreCase("proceed")
+				&& !choice.equalsIgnoreCase("investigate"));
 		if (choice.equalsIgnoreCase("investigate")) {
 			System.out.println(rooms[13]);
 			do {
-				System.out.println("What do you want to do? (Check the \"bush\", \"proceed\" or \"return\")");
+				System.out
+						.println("What do you want to do? (Check the \"bush\", \"proceed\" or \"return\")");
 				choice = Keyboard.keyb.nextLine();
-			} while (!choice.equalsIgnoreCase("bush") && !choice.equalsIgnoreCase("proceed")
+			} while (!choice.equalsIgnoreCase("bush")
+					&& !choice.equalsIgnoreCase("proceed")
 					&& !choice.equalsIgnoreCase("return"));
 			if (choice.equalsIgnoreCase("bush")) {
-				System.out.println("You check in the bush to find one of the towwns guard dead"
-						+ "\nYou look through the guards pouch to find a Super Potion (Heals 10 health)"
-						+ "\n\nYou have obtained\n+1 Super Potion");
+				System.out
+						.println("You check in the bush to find one of the towwns guard dead"
+								+ "\nYou look through the guards pouch to find a Super Potion (Heals 10 health)"
+								+ "\n\nYou have obtained\n+1 Super Potion");
 				do {
-					System.out.println("\nWhat do you want to do? (\"proceed\" or \"return\")");
+					System.out
+							.println("\nWhat do you want to do? (\"proceed\" or \"return\")");
 					choice = Keyboard.keyb.nextLine();
-				} while (!choice.equalsIgnoreCase("proceed") && !choice.equalsIgnoreCase("return")
+				} while (!choice.equalsIgnoreCase("proceed")
+						&& !choice.equalsIgnoreCase("return")
 						&& !choice.equalsIgnoreCase("hero"));
 				if (choice.equalsIgnoreCase("proceed")) {
-					System.out.println("I don't think we can go any further\nWe should head back to the main trail");
-					System.out.println("\nAfter returning to the main trail you proceed with your quest");
+					System.out
+							.println("I don't think we can go any further\nWe should head back to the main trail");
+					System.out
+							.println("\nAfter returning to the main trail you proceed with your quest");
 				} else if (choice.equalsIgnoreCase("hero")) {
 					System.out.println(pages[7]);
 					neMe.level = 1;
 					neMe.money = false;
 					neMe.type = "Goblin";
+					neMe.basicAbility = "Club Smash";
 					neMe.damage = (int) (Math.random() * (1.5 * 2) + 1);
 					neMe.health = (int) (Math.random() * (1.5 * 3) + 8);
 					commenceBattle();
-					System.out.println(
-							"\nWe were victorious!\nWe should continue on with our quest, but first we should return to the main trail");
-					System.out.println("\nAfter returning to the main trail you proceed with your quest");
+					System.out
+							.println("\nWe were victorious!\nWe should continue on with our quest, but first we should return to the main trail");
+					System.out
+							.println("\nAfter returning to the main trail you proceed with your quest");
 				} else {
-					System.out.println("\nAfter returning to the main trail you proceed with your quest");
+					System.out
+							.println("\nAfter returning to the main trail you proceed with your quest");
 				}
 			}
 			// TODO:Insert the completed battle sequence here
@@ -130,7 +138,8 @@ public class Main {
 		do {
 			System.out.println(rooms[1]);
 			choice = Keyboard.keyb.nextLine();
-		} while (!choice.equalsIgnoreCase("Shadow Cavern") && !choice.equalsIgnoreCase("Starlight Path"));
+		} while (!choice.equalsIgnoreCase("Shadow Cavern")
+				&& !choice.equalsIgnoreCase("Starlight Path"));
 		if (choice.equalsIgnoreCase("shadow cavern")) {
 			headToShadowCavern();
 		} else {
@@ -150,13 +159,15 @@ public class Main {
 	 * The path the user will follow if they decide to go down the shadow cavern
 	 */
 	static void headToShadowCavern() {
-		System.out.println("\n=============" + "\nShadow Cavern" + "\n=============");
+		System.out.println("\n=============" + "\nShadow Cavern"
+				+ "\n=============");
 		System.out.println(pages[6]);
 		hitEnter();
 		System.out.println(rooms[2]);
 		hitEnter();
 		System.out.println(rooms[3]);
 		neMe.type = "Dwarf";
+		neMe.basicAbility = "Punch";
 		neMe.money = true;
 		neMe.level = 1;
 		neMe.health = (int) (Math.random() * (1.5 * 3) + 2);
@@ -165,108 +176,194 @@ public class Main {
 		do {
 			System.out.println(rooms[4]);
 			choice = Keyboard.keyb.nextLine();
-		} while (!choice.equalsIgnoreCase("proceed") && !choice.equalsIgnoreCase("investigate"));
+		} while (!choice.equalsIgnoreCase("proceed")
+				&& !choice.equalsIgnoreCase("investigate"));
 		// If the user chooses to investigate
 		if (choice.equalsIgnoreCase("investigate")) {
-			System.out.println("You look around but it is too hard to see anything so you proceed");
+			System.out
+					.println("You look around but it is too hard to see anything so you proceed");
 		}
 		System.out.println(rooms[5]);
 		neMe.level = 2;
 		neMe.money = false;
 		neMe.type = "Loogaroo";
+		neMe.basicAbility = "Bite";
 		neMe.damage = (int) (Math.random() * (1.5 * 2) + 3);
 		neMe.health = (int) (Math.random() * (1.5 * 3) + 4);
 		commenceBattle();
-		headToShadowCavern();
-		// TODO:All this
+		do {
+			System.out.println(rooms[6]);
+			choice = Keyboard.keyb.nextLine();
+		} while (!choice.equalsIgnoreCase("proceed")
+				&& !choice.equalsIgnoreCase("investigate"));
+		// If the user chooses to investigate
+		if (choice.equalsIgnoreCase("investigate")) {
+			System.out
+					.println("You look around but it is too hard to see anything so you proceed");
+		}
+		System.out.println(rooms[7]);
+		neMe.level = 4;
+		neMe.money = true;
+		neMe.type = "Ahool";
+		neMe.basicAbility = "Wing Swipe";
+		neMe.damage = (int) (Math.random() * (1.5 * 2) + 5);
+		neMe.health = (int) (Math.random() * (1.5 * 3) + 9);
+		commenceBattle();
+		do {
+			System.out.println(rooms[8]);
+			choice = Keyboard.keyb.nextLine();
+		} while (!choice.equalsIgnoreCase("proceed")
+				&& !choice.equalsIgnoreCase("investigate"));
+		// If the user chooses to investigate
+		if (choice.equalsIgnoreCase("investigate")) {
+			// TODO: What happens if you want to investigate?
+			System.out.println("");
+		}
+		System.out.println(rooms[9]);
+		neMe.level = 5;
+		neMe.money = true;
+		neMe.type = "Lindworm";
+		neMe.basicAbility = "Tackle";
+		neMe.damage = (int) (Math.random() * (1.5 * 2) + 8);
+		neMe.health = (int) (Math.random() * (1.5 * 3) + 7);
+		commenceBattle();
+		do {
+			System.out.println(rooms[10]);
+			choice = Keyboard.keyb.nextLine();
+		} while (!choice.equalsIgnoreCase("proceed")
+				&& !choice.equalsIgnoreCase("investigate"));
+		// If the user chooses to investigate
+		if (choice.equalsIgnoreCase("investigate")) {
+			// TODO: What happens if you want to investigate?
+			System.out.println("");
+		}
+		System.out.println(rooms[11]);
+		neMe.level = 8;
+		neMe.money = true;
+		neMe.type = "Cerastes";
+		neMe.basicAbility = "Squeeze";
+		neMe.damage = (int) (Math.random() * (1.5 * 2) + 7);
+		neMe.health = (int) (Math.random() * (1.5 * 3) + 18);
+		commenceBattle();
+		System.out.println(rooms[12]);
 	}
 
 	/**
 	 * Adds a description for each area or set of the story
 	 */
 	public static void initialize() {
-		pages[0] = new Page("========" + "\nPrologue" + "\n========"
-				+ "\nYou are a student learning fighting styles to one day be part of the"
-				+ "\nKings royal knights. You aim to be the best knight there is and to"
-				+ "\nprotect the town with every ounce of strength you have. Your town, Northbury"
-				+ "\nhas won a war that has lasted over a decade. As a celebration, the king has"
-				+ "\ninvited everyone to his castle to celebrate this long needed victory.");
-		pages[1] = new Page("King: \"Today is a glorious day for Northbury! "
-				+ "\nWe have won the long battle against our rival and today we celebrate.\""
-				+ "\n\nKing’s Servant: \"The Princess has gone missing!\""
-				+ "\n\nKing: \"Who shall save the princess?\""
-				+ "\n\nThe king looks around the room to only find exhausted and injured knights "
-				+ "\nalong with other townspeople and inexperienced warriors to be.");
-		pages[2] = new Page("You: \"I will save the princess!\""
-				+ "\n\nKing: \"Are you sure you are capable to take on the task? It will be very dangerous\""
-				+ "\n\nYou: \"I can do this. I have been training to protect the people.\""
-				+ "\n\nKing: \"Okay, what is your name?\" (Enter a name)");
-		pages[3] = new Page("King: \"" + p.name + ", I will get my finest equipment for you. "
-				+ "\nMeet my delivery man at the front gate in the next hour.\""
-				+ "\n\nThe celebration comes to an end and you head home to "
-				+ "\nprepare for your upcoming adventure.");
-		pages[4] = new Page("45 minutes have passed when you decide it’s time to leave. "
-				+ "\nYou make your way to the front door when you are stopped by your mother" + "\n\nMother: \""
-				+ p.name + ", please be careful. I will be praying for your safety. "
-				+ "\nI have also went out and bought this for you.\""
-				// TODO: Insert a DDS to add items to the inventory
-				+ "\n\nYou have obtained: \n+1 Poison Antidote \n+1 Paralyze Antidote \n+1 Awakening Spell \n+1 Potion"
-				+ "\n\nYou then head out to the front gate where you meet a delivery man holding a package");
-		pages[5] = new Page("Delivery Man: \"This is yours\"" + "\n\nYou: \"Thank you\""
-				+ "\n\nThe delivery man leaves and you open the package. There is a note."
-				+ "\n\n\"Here is the finest equipment I could find for you. It is very unlikely that you "
-				+ "\nwill find anything else during your quest. Be sure you come back with my daughter, "
-				+ "\nI am counting on you.\"" + "\n-The King" + "\n\nYou put on the equipment");
+		pages[0] = new Page(
+				"========"
+						+ "\nPrologue"
+						+ "\n========"
+						+ "\nYou are a student learning fighting styles to one day be part of the"
+						+ "\nKings royal knights. You aim to be the best knight there is and to"
+						+ "\nprotect the town with every ounce of strength you have. Your town, Northbury"
+						+ "\nhas won a war that has lasted over a decade. As a celebration, the king has"
+						+ "\ninvited everyone to his castle to celebrate this long needed victory.");
+		pages[1] = new Page(
+				"King: \"Today is a glorious day for Northbury! "
+						+ "\nWe have won the long battle against our rival and today we celebrate.\""
+						+ "\n\nKing’s Servant: \"The Princess has gone missing!\""
+						+ "\n\nKing: \"Who shall save the princess?\""
+						+ "\n\nThe king looks around the room to only find exhausted and injured knights "
+						+ "\nalong with other townspeople and inexperienced warriors to be.");
+		pages[2] = new Page(
+				"You: \"I will save the princess!\""
+						+ "\n\nKing: \"Are you sure you are capable to take on the task? It will be very dangerous\""
+						+ "\n\nYou: \"I can do this. I have been training to protect the people.\""
+						+ "\n\nKing: \"Okay, what is your name?\" (Enter a name)");
+		pages[3] = new Page(
+				"King: \""
+						+ p.name
+						+ ", I will get my finest equipment for you. "
+						+ "\nMeet my delivery man at the front gate in the next hour.\""
+						+ "\n\nThe celebration comes to an end and you head home to "
+						+ "\nprepare for your upcoming adventure.");
+		pages[4] = new Page(
+				"45 minutes have passed when you decide it’s time to leave. "
+						+ "\nYou make your way to the front door when you are stopped by your mother"
+						+ "\n\nMother: \""
+						+ p.name
+						+ ", please be careful. I will be praying for your safety. "
+						+ "\nI have also went out and bought this for you.\""
+						// TODO: Insert a DDS to add items to the inventory
+						+ "\n\nYou have obtained: \n+1 Poison Antidote \n+1 Paralyze Antidote \n+1 Awakening Spell \n+1 Potion"
+						+ "\n\nYou then head out to the front gate where you meet a delivery man holding a package");
+		pages[5] = new Page(
+				"Delivery Man: \"This is yours\""
+						+ "\n\nYou: \"Thank you\""
+						+ "\n\nThe delivery man leaves and you open the package. There is a note."
+						+ "\n\n\"Here is the finest equipment I could find for you. It is very unlikely that you "
+						+ "\nwill find anything else during your quest. Be sure you come back with my daughter, "
+						+ "\nI am counting on you.\"" + "\n-The King"
+						+ "\n\nYou put on the equipment");
 		pages[6] = new Page(
 				"\nYou had decided to go down Shadow Cavern. Just like the name, the cavern looks too dark to see anything"
 						+ "\nYou can hear the drops of water hitting the floor but other than that, it is quiet but you can sense danger. Be prepared!");
-		pages[7] = new Page("Having your new weapon, you swing the weapon around at some trees and bushes when you"
-				+ "\nuncover a hidden path you didn't see. You walk through the path to find a goblin!");
+		pages[7] = new Page(
+				"Having your new weapon, you swing the weapon around at some trees and bushes when you"
+						+ "\nuncover a hidden path you didn't see. You walk through the path to find a goblin!");
 		// Rooms
-		rooms[0] = new Room("\nYou are now in the woods outside your town following the footprints left behind. "
-				+ "\nShould we \"proceed\" or \"investigate\"?");
+		rooms[0] = new Room(
+				"\nYou are now in the woods outside your town following the footprints left behind. "
+						+ "\nShould we \"proceed\" or \"investigate\"?");
 		// First fork in the road
 		rooms[1] = new Room(
 				"\nThere is now a fork in the road; one path leads to Shadow Cavern, the other leads to Starlight path"
 						+ "\nShould we go down \"Shadow Cavern\" or \"Starlight Path\"?");
 		// Shadow Cavern
-		rooms[2] = new Room("\nThe cavern surrounds you, you can't stop the feeling of being watched"
-				+ "\nChills are starting to run down your back. Maybe you've made a bad decision...");
-		rooms[3] = new Room("Your suspescion was correct, a Dwarf jumps out at you trying to steal your stuff"
-				+ "\nThis means WAR!");
-		rooms[4] = new Room("\nThe path keeps getting darker the further you go"
-				+ "\nAlthough you killed the Dwarf, you still feel like you are being watched"
-				+ "\nThe feeling keeps getting worst, what could it be?"
-				+ "\nShould we \"proceed\" or \"investigate\"?");
-		rooms[5] = new Room("\nYou are in an open area of the cavern, here you are able to see your surroundings"
-				+ "\nThe cave looks damp but other than that, nothing seems out of place"
-				+ "\nYou start to hear rustling and the sounds of someone walking up to you"
-				+ "\n\n*It steps into the light*\n"
-				+ "\nIt's a Loogaroo! Quickly, kill it before it can suck all your blood!");
-		rooms[6] = new Room("\nIt looks like it is just a long dark walkway from here..."
-				+ "\nYou have a feeling that you are being watched more closely... WHAT IS IT?!"
-				+ "\nShould we \"proceed\" or \"investigate\"?");
-		rooms[7] = new Room("\nIt's another opening, but it is very dark in here. It makes it kind of hard to see"
-				+ "\nA rock hits your shoulder, you look up"
-				+ "\nAn Ahool swoops down befores you and begins to attack, fight your way out of this one");
-		rooms[8] = new Room("\nThere is nothing new with the cave... Still dark and damp..."
-				+ "\nAnd you still feel like you are being watched... I'm not sure what you think would happen"
-				+ "\nShould we \"proceed\" or \"investigate\"?");
-		rooms[9] = new Room("\nYou come across a body of water within the cave, if you follow it you can get out!"
-				+ "\n*You begin to follow the water when you hear a splash from behind*"
-				+ "\nYou turn to see a Lindworm heading your direction!");
-		rooms[10] = new Room("\nYou continue to follow the water into the unknown darkness"
-				+ "\nYou still have the unsettling feeling that something big has yet to come"
-				+ "\nShould we \"proceed\" or \"investigate\"?");
-		rooms[11] = new Room("\nYou can see a faint light coming from the distance, you must be nearing the end!"
-				+ "\n*Your hero sprints to the end" + "\n*THUD*"
-				+ "\nYou hit some soft object and get propelled backwards" + "\nA Cerastes stands before you");
-		rooms[12] = new Room("\nYou made it though the caves system in one piece!"
-				+ "\nYou are more than half way to the Jack-E's castle");
+		rooms[2] = new Room(
+				"\nThe cavern surrounds you, you can't stop the feeling of being watched"
+						+ "\nChills are starting to run down your back. Maybe you've made a bad decision...");
+		rooms[3] = new Room(
+				"Your suspescion was correct, a Dwarf jumps out at you trying to steal your stuff"
+						+ "\nThis means WAR!");
+		rooms[4] = new Room(
+				"\nThe path keeps getting darker the further you go"
+						+ "\nAlthough you killed the Dwarf, you still feel like you are being watched"
+						+ "\nThe feeling keeps getting worst, what could it be?"
+						+ "\nShould we \"proceed\" or \"investigate\"?");
+		rooms[5] = new Room(
+				"\nYou are in an open area of the cavern, here you are able to see your surroundings"
+						+ "\nThe cave looks damp but other than that, nothing seems out of place"
+						+ "\nYou start to hear rustling and the sounds of someone walking up to you"
+						+ "\n\n*It steps into the light*\n"
+						+ "\nIt's a Loogaroo! Quickly, kill it before it can suck all your blood!");
+		rooms[6] = new Room(
+				"\nIt looks like it is just a long dark walkway from here..."
+						+ "\nYou have a feeling that you are being watched more closely... WHAT IS IT?!"
+						+ "\nShould we \"proceed\" or \"investigate\"?");
+		rooms[7] = new Room(
+				"\nIt's another opening, but it is very dark in here. It makes it kind of hard to see"
+						+ "\nA rock hits your shoulder, you look up"
+						+ "\nAn Ahool swoops down befores you and begins to attack, fight your way out of this one");
+		rooms[8] = new Room(
+				"\nThere is nothing new with the cave... Still dark and damp..."
+						+ "\nAnd you still feel like you are being watched... I'm not sure what you think would happen"
+						+ "\nShould we \"proceed\" or \"investigate\"?");
+		rooms[9] = new Room(
+				"\nYou come across a body of water within the cave, if you follow it you can get out!"
+						+ "\n*You begin to follow the water when you hear a splash from behind*"
+						+ "\nYou turn to see a Lindworm heading your direction!");
+		rooms[10] = new Room(
+				"\nYou continue to follow the water into the unknown darkness"
+						+ "\nYou still have the unsettling feeling that something big has yet to come"
+						+ "\nShould we \"proceed\" or \"investigate\"?");
+		rooms[11] = new Room(
+				"\nYou can see a faint light coming from the distance, you must be nearing the end!"
+						+ "\n*Your hero sprints to the end"
+						+ "\n*THUD*"
+						+ "\nYou hit some soft object and get propelled backwards"
+						+ "\nA Cerastes stands before you");
+		rooms[12] = new Room(
+				"\nYou made it though the caves system in one piece!"
+						+ "\nYou are more than half way to the Jack-E's castle");
 		// Exploration outside the town
-		rooms[13] = new Room("\nYou search the area to find the footprints are similar to a human’s but isn’t"
-				+ "\nYou decipher this because no human could possible have size 20 shoes"
-				+ "\nYou also notice an odd looking bush and a faint line of slime");
+		rooms[13] = new Room(
+				"\nYou search the area to find the footprints are similar to a human’s but isn’t"
+						+ "\nYou decipher this because no human could possible have size 20 shoes"
+						+ "\nYou also notice an odd looking bush and a faint line of slime");
 		rooms[14] = new Room("");
 		rooms[15] = new Room("");
 	}
@@ -281,36 +378,43 @@ public class Main {
 		int playerDmg;
 		int neMeDmg;
 		String battleChoice = "";
-		System.out.println(
-				"\nYou have encountered a " + neMe + " >> " + getEnemyHealthBar() + " Atk:" + neMe.damage);
-		System.out.println("\n" + p.name + " >> " + Player.getPlayerHealthBar() + " Atk:" + p.damage);
+		System.out.println("\nYou have encountered a " + neMe + " >> "
+				+ getEnemyHealthBar() + " Atk:" + neMe.damage);
+		System.out.println("\n" + p.name + " >> " + p.getPlayerHealthBar()
+				+ " Atk:" + p.damage);
 		do {
 			// Creates a random damage based on the characters attack damage
 			neMeDmg = (int) (Math.random() * (1.5 * 2) + neMe.damage);
 			playerDmg = (int) (Math.random() * (1.5 * 2) + p.damage);
 			do {
-				System.out.println("What would you like to do?\nAttack\nInventory");
+				System.out
+						.println("What would you like to do?\nAttack\nInventory");
 				battleChoice = Keyboard.keyb.nextLine();
-			} while (!battleChoice.equalsIgnoreCase("attack") && !battleChoice.equalsIgnoreCase("inventory"));
+			} while (!battleChoice.equalsIgnoreCase("attack")
+					&& !battleChoice.equalsIgnoreCase("inventory"));
 			if (battleChoice.equalsIgnoreCase("attack")) {
 				neMe.health -= playerDmg;
 				p.health -= neMeDmg;
 				// If the enemy dies
 				if (neMe.health < 1) {
 					p.health += neMeDmg;
-					System.out.println(p.name + " used slash dealing " + playerDmg + "Atk");
+					System.out.println(p.name + " used slash dealing "
+							+ playerDmg + "Atk");
 					// If the user dies
 				} else if (p.health < 1) {
-					System.out.println("The " + neMe.type + " used tackle dealing " + neMeDmg + "Atk");
+					System.out.println("The " + neMe.type + " "
+							+ neMe.basicAbility + " " + neMeDmg + "Atk");
 					// If both are still alive
 				} else {
-					System.out.println(p.name + " used slash dealing " + playerDmg + "Atk\nThe " + neMe.type
+					System.out.println(p.name + " used slash dealing "
+							+ playerDmg + "Atk\nThe " + neMe.type
 							+ " used tackle dealing " + neMeDmg + "Atk");
 				}
 			} else {
 				// TODO: insert an inventory option
 			}
-			System.out.println("\n" + p + " " + Player.getPlayerHealthBar() + "\n" + neMe + " " + getEnemyHealthBar() + "\n");
+			System.out.println("\n" + p + " " + p.getPlayerHealthBar() + "\n"
+					+ neMe + " " + getEnemyHealthBar() + "\n");
 		} while (neMe.health > 0 && p.health > 0);
 		// If the user happens to die
 		if (p.health < 1)
@@ -320,14 +424,16 @@ public class Main {
 		if (neMe.money = true) {
 			int goldEarned = (int) (Math.random() * (1.5 * 5) + neMe.level);
 			p.money += goldEarned;
-			System.out.println("You have defeated " + neMe.type + " gaining " + exp + "exp"
-					+ "\nYou have also acquired " + goldEarned + " Gold");
+			System.out.println("You have defeated " + neMe.type + " gaining "
+					+ exp + "exp" + "\nYou have also acquired " + goldEarned
+					+ " Gold");
 			// If no gold is obtained
 		} else {
-			System.out.println("You have defeated " + neMe.type + " gaining " + exp + "exp");
+			System.out.println("You have defeated " + neMe.type + " gaining "
+					+ exp + "exp");
 		}
 		p.experience += exp;
-		Player.levelUp();
+		p.levelUp();
 	}
 
 	/**
@@ -337,32 +443,36 @@ public class Main {
 	 */
 	public static String getEnemyHealthBar() {
 		String neMeHp = "Hp:";
-		if(neMe.health < 51){
+		if (neMe.health < 51) {
 			for (int i = 0; i < neMe.health; i++) {
 				neMeHp += '*';
 			}
-		return neMeHp;
-		}else{
+			return neMeHp;
+		} else {
 			return "HP:" + neMe.health;
 		}
 	}
 
 	static void endGame() {
 		if (p.health > 0) {
-			System.out.println(
-					"You took the key off the prison guard and released the \nprincess from her cell.  You and the Princess return to Northbury.\n-End-");
+			System.out
+					.println("You took the key off the prison guard and released the \nprincess from her cell.  You and the Princess return to Northbury.\n-End-");
 			do {
-				System.out.println("\n\n\n-Would you like to play again? (\"yes\" or \"no\")-");
+				System.out
+						.println("\n\n\n-Would you like to play again? (\"yes\" or \"no\")-");
 				choice = Keyboard.keyb.nextLine();
-			} while (!choice.equalsIgnoreCase("yes") && !choice.equalsIgnoreCase("no"));
+			} while (!choice.equalsIgnoreCase("yes")
+					&& !choice.equalsIgnoreCase("no"));
 			if (choice.equalsIgnoreCase("yes"))
 				mainMenu();
 		} else {
 			System.out.println("You have died... You let us down...");
 			do {
-				System.out.println("\n\n\n-Would you like to play again? (\"yes\" or \"no\")-");
+				System.out
+						.println("\n\n\n-Would you like to play again? (\"yes\" or \"no\")-");
 				choice = Keyboard.keyb.nextLine();
-			} while (!choice.equalsIgnoreCase("yes") && !choice.equalsIgnoreCase("no"));
+			} while (!choice.equalsIgnoreCase("yes")
+					&& !choice.equalsIgnoreCase("no"));
 			if (choice.equalsIgnoreCase("yes"))
 				mainMenu();
 		}

@@ -1,20 +1,20 @@
 package typeQuest;
 
 public class Player {
-	static String name;
-	static int experience = 0;
+	String name;
+	int experience = 0;
 	int money = 0;
-	static int health;
-	static int damage;
-	static int level = 1;
-	static int experienceNeeded = 10;
+	int health;
+	int damage;
+	int level = 1;
+	int experienceNeeded = 10;
 
 	/**
 	 * If the character levels up Multiply the experience needed by the level
 	 * Increases the heal and attack damage by a random number Print out new
 	 * stats
 	 */
-	public static void levelUp() {
+	public void levelUp() {
 		int temp;
 		int bonusHealth;
 		if (experience >= experienceNeeded) {
@@ -43,7 +43,7 @@ public class Player {
 	 * 
 	 * @return
 	 */
-	public static String getPlayerHealthBar() {
+	public String getPlayerHealthBar() {
 		String playerHp = "Hp:";
 		if (health < 51) {
 			for (int i = 0; i < health; i++) {

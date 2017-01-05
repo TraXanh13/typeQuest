@@ -2,9 +2,10 @@ package typeQuest;
 
 public class Enemy{
 	String type = "";
+	String basicAbility = "";
 	boolean money;
-	static int health;
-	static int damage;
+	int health;
+	int damage;
 	int level;
 
 	// @Override
