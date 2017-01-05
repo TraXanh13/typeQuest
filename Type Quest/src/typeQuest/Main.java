@@ -1,5 +1,11 @@
 package typeQuest;
 
+/**
+ * 
+ * @author minia
+ *
+ *
+ */
 public class Main {
 	static Player p = new Player();
 	static Enemy neMe = new Enemy();
@@ -8,13 +14,25 @@ public class Main {
 	static Page[] pages = new Page[12];
 
 	public static void main(String[] args) {
-		p.level = 1;
-		p.health = (int) (Math.random() * (1.5 * 5) + 6);
-		p.damage = (int) (Math.random() * (1.5 * 3) + 1);
+		/*
+		 * Characteristics for every enemy
+		 * neMe.money = false; 
+		 * neMe.type = ""; 
+		 * neMe.damage = (int) (Math.random() * (1.5 * 2) + 1); 
+		 * neMe.health = (int) (Math.random() * (1.5 * 3) + 8);
+		 */
+		//TODO: Remove this!!!! Only for testing purposes
+		p.health = 100;
+		p.damage = 100;
+		//p.health = (int) (Math.random() * (1.5 * 5) + 6);
+		//p.damage = (int) (Math.random() * (1.5 * 3) + 2);
 		initialize();
 		mainMenu();
 	}
 
+	/**
+	 * The first screen the user will see before they enter the game
+	 */
 	public static void mainMenu() {
 		System.out.println("Welcome to Type Quest!");
 		do {
@@ -73,31 +91,66 @@ public class Main {
 			System.out.println(rooms[0]);
 			choice = Keyboard.keyb.nextLine();
 		} while (!choice.equalsIgnoreCase("proceed") && !choice.equalsIgnoreCase("investigate"));
-		if (choice.equalsIgnoreCase("proceed")) {
-			do {
-				System.out.println(rooms[1]);
-				choice = Keyboard.keyb.nextLine();
-			} while (!choice.equalsIgnoreCase("Shadow Cavern") && !choice.equalsIgnoreCase("Starlight Path"));
-			if (choice.equalsIgnoreCase("shadow cavern")) {
-				headToShadowCavern();
-			}else{
-				headToStarlightPath();
-			}
-		} else {
+		if (choice.equalsIgnoreCase("investigate")) {
 			System.out.println(rooms[13]);
+			do {
+				System.out.println("What do you want to do? (Check the \"bush\", \"proceed\" or \"return\")");
+				choice = Keyboard.keyb.nextLine();
+			} while (!choice.equalsIgnoreCase("bush") && !choice.equalsIgnoreCase("proceed")
+					&& !choice.equalsIgnoreCase("return"));
+			if (choice.equalsIgnoreCase("bush")) {
+				System.out.println("You check in the bush to find one of the towwns guard dead"
+						+ "\nYou look through the guards pouch to find a Super Potion (Heals 10 health)"
+						+ "\n\nYou have obtained\n+1 Super Potion");
+				do {
+					System.out.println("\nWhat do you want to do? (\"proceed\" or \"return\")");
+					choice = Keyboard.keyb.nextLine();
+				} while (!choice.equalsIgnoreCase("proceed") && !choice.equalsIgnoreCase("return")
+						&& !choice.equalsIgnoreCase("hero"));
+				if (choice.equalsIgnoreCase("proceed")) {
+					System.out.println("I don't think we can go any further\nWe should head back to the main trail");
+					System.out.println("\nAfter returning to the main trail you proceed with your quest");
+				} else if (choice.equalsIgnoreCase("hero")) {
+					System.out.println(pages[7]);
+					neMe.level = 1;
+					neMe.money = false;
+					neMe.type = "Goblin";
+					neMe.damage = (int) (Math.random() * (1.5 * 2) + 1);
+					neMe.health = (int) (Math.random() * (1.5 * 3) + 8);
+					commenceBattle();
+					System.out.println(
+							"\nWe were victorious!\nWe should continue on with our quest, but first we should return to the main trail");
+					System.out.println("\nAfter returning to the main trail you proceed with your quest");
+				} else {
+					System.out.println("\nAfter returning to the main trail you proceed with your quest");
+				}
+			}
 			// TODO:Insert the completed battle sequence here
 		}
+		do {
+			System.out.println(rooms[1]);
+			choice = Keyboard.keyb.nextLine();
+		} while (!choice.equalsIgnoreCase("Shadow Cavern") && !choice.equalsIgnoreCase("Starlight Path"));
+		if (choice.equalsIgnoreCase("shadow cavern")) {
+			headToShadowCavern();
+		} else {
+			headToStarlightPath();
+		}
 	}
-	
-	static void headToStarlightPath(){
+
+	/**
+	 * The path the user will follow if they decide to go down starlight path
+	 */
+	static void headToStarlightPath() {
 		System.out.println("I wish I wrote a game :/");
-		//TODO: Create starlight path
+		// TODO: Create starlight path
 	}
-	
-	static void headToShadowCavern(){
-		System.out.println("\n============="
-				+ "\nShadow Cavern"
-				+ "\n=============");
+
+	/**
+	 * The path the user will follow if they decide to go down the shadow cavern
+	 */
+	static void headToShadowCavern() {
+		System.out.println("\n=============" + "\nShadow Cavern" + "\n=============");
 		System.out.println(pages[6]);
 		hitEnter();
 		System.out.println(rooms[2]);
@@ -113,7 +166,19 @@ public class Main {
 			System.out.println(rooms[4]);
 			choice = Keyboard.keyb.nextLine();
 		} while (!choice.equalsIgnoreCase("proceed") && !choice.equalsIgnoreCase("investigate"));
-
+		// If the user chooses to investigate
+		if (choice.equalsIgnoreCase("investigate")) {
+			System.out.println("You look around but it is too hard to see anything so you proceed");
+		}
+		System.out.println(rooms[5]);
+		neMe.level = 2;
+		neMe.money = false;
+		neMe.type = "Loogaroo";
+		neMe.damage = (int) (Math.random() * (1.5 * 2) + 3);
+		neMe.health = (int) (Math.random() * (1.5 * 3) + 4);
+		commenceBattle();
+		headToShadowCavern();
+		// TODO:All this
 	}
 
 	/**
@@ -155,7 +220,8 @@ public class Main {
 		pages[6] = new Page(
 				"\nYou had decided to go down Shadow Cavern. Just like the name, the cavern looks too dark to see anything"
 						+ "\nYou can hear the drops of water hitting the floor but other than that, it is quiet but you can sense danger. Be prepared!");
-		pages[7] = new Page("");
+		pages[7] = new Page("Having your new weapon, you swing the weapon around at some trees and bushes when you"
+				+ "\nuncover a hidden path you didn't see. You walk through the path to find a goblin!");
 		// Rooms
 		rooms[0] = new Room("\nYou are now in the woods outside your town following the footprints left behind. "
 				+ "\nShould we \"proceed\" or \"investigate\"?");
@@ -175,7 +241,7 @@ public class Main {
 		rooms[5] = new Room("\nYou are in an open area of the cavern, here you are able to see your surroundings"
 				+ "\nThe cave looks damp but other than that, nothing seems out of place"
 				+ "\nYou start to hear rustling and the sounds of someone walking up to you"
-				+ "\n*It steps into the light*"
+				+ "\n\n*It steps into the light*\n"
 				+ "\nIt's a Loogaroo! Quickly, kill it before it can suck all your blood!");
 		rooms[6] = new Room("\nIt looks like it is just a long dark walkway from here..."
 				+ "\nYou have a feeling that you are being watched more closely... WHAT IS IT?!"
@@ -206,19 +272,20 @@ public class Main {
 	}
 
 	/**
-	 * Battle sequence Creates the atkdmg for the upcoming turn Asks the user to
-	 * attack or use inventory
+	 * Battle sequence Creates the atk dmg for the upcoming turn Asks the user
+	 * to attack or use inventory
 	 * 
 	 */
 	public static void commenceBattle() {
-		//TODO: Have specified abilities for the characters
+		// TODO: Have specified abilities for the characters
 		int playerDmg;
 		int neMeDmg;
 		String battleChoice = "";
 		System.out.println(
-				"\nYou have encountered a " + neMe.type + " >> " + getEnemyHealthBar() + " Atk:" + neMe.damage);
-		System.out.println("\n" + p.name + " >> " + getPlayerHealthBar() + " Atk:" + p.damage);
+				"\nYou have encountered a " + neMe + " >> " + getEnemyHealthBar() + " Atk:" + neMe.damage);
+		System.out.println("\n" + p.name + " >> " + Player.getPlayerHealthBar() + " Atk:" + p.damage);
 		do {
+			// Creates a random damage based on the characters attack damage
 			neMeDmg = (int) (Math.random() * (1.5 * 2) + neMe.damage);
 			playerDmg = (int) (Math.random() * (1.5 * 2) + p.damage);
 			do {
@@ -228,37 +295,39 @@ public class Main {
 			if (battleChoice.equalsIgnoreCase("attack")) {
 				neMe.health -= playerDmg;
 				p.health -= neMeDmg;
-				if(neMe.health < 1){
+				// If the enemy dies
+				if (neMe.health < 1) {
 					p.health += neMeDmg;
 					System.out.println(p.name + " used slash dealing " + playerDmg + "Atk");
-				}else if(p.health < 1){
+					// If the user dies
+				} else if (p.health < 1) {
 					System.out.println("The " + neMe.type + " used tackle dealing " + neMeDmg + "Atk");
-				}else{
+					// If both are still alive
+				} else {
 					System.out.println(p.name + " used slash dealing " + playerDmg + "Atk\nThe " + neMe.type
-						+ " used tackle dealing " + neMeDmg + "Atk");
+							+ " used tackle dealing " + neMeDmg + "Atk");
 				}
 			} else {
 				// TODO: insert an inventory option
 			}
-			System.out.println("\n" + p + " " + getPlayerHealthBar() + p.health + "\n" + neMe + " "
-					+ getEnemyHealthBar() + neMe.health + "\n");
+			System.out.println("\n" + p + " " + Player.getPlayerHealthBar() + "\n" + neMe + " " + getEnemyHealthBar() + "\n");
 		} while (neMe.health > 0 && p.health > 0);
-		if (p.health < 1) {
+		// If the user happens to die
+		if (p.health < 1)
 			endGame();
+		int exp = (int) (Math.random() * (1.5 * 10) + neMe.level);
+		// If the user is able to pick up gold
+		if (neMe.money = true) {
+			int goldEarned = (int) (Math.random() * (1.5 * 5) + neMe.level);
+			p.money += goldEarned;
+			System.out.println("You have defeated " + neMe.type + " gaining " + exp + "exp"
+					+ "\nYou have also acquired " + goldEarned + " Gold");
+			// If no gold is obtained
+		} else {
+			System.out.println("You have defeated " + neMe.type + " gaining " + exp + "exp");
 		}
-	}
-
-	/**
-	 * Print out the players health in '*'
-	 * 
-	 * @return
-	 */
-	public static String getPlayerHealthBar() {
-		String playerHp = "Hp:";
-		for (int i = 0; i < p.health; i++) {
-			playerHp += '*';
-		}
-		return playerHp;
+		p.experience += exp;
+		Player.levelUp();
 	}
 
 	/**
@@ -268,10 +337,14 @@ public class Main {
 	 */
 	public static String getEnemyHealthBar() {
 		String neMeHp = "Hp:";
-		for (int i = 0; i < neMe.health; i++) {
-			neMeHp += '*';
-		}
+		if(neMe.health < 51){
+			for (int i = 0; i < neMe.health; i++) {
+				neMeHp += '*';
+			}
 		return neMeHp;
+		}else{
+			return "HP:" + neMe.health;
+		}
 	}
 
 	static void endGame() {
