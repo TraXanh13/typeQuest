@@ -79,26 +79,41 @@ public class Main {
 				choice = Keyboard.keyb.nextLine();
 			} while (!choice.equalsIgnoreCase("Shadow Cavern") && !choice.equalsIgnoreCase("Starlight Path"));
 			if (choice.equalsIgnoreCase("shadow cavern")) {
-				System.out.println("\n============="
-						+ "\nShadow Cavern"
-						+ "\n=============");
-				System.out.println(pages[6]);
-				hitEnter();
-				System.out.println(rooms[2]);
-				hitEnter();
-				System.out.println(rooms[3]);
-				neMe.type = "Dwarf";
-				neMe.money = true;
-				neMe.level = 1;
-				neMe.health = (int) (Math.random() * (1.5 * 3) + 2);
-				neMe.damage = (int) (Math.random() * (1.5 * 2) + 1);
-				commenceBattle();
-				System.out.println(rooms[4]);
+				headToShadowCavern();
+			}else{
+				headToStarlightPath();
 			}
 		} else {
 			System.out.println(rooms[13]);
 			// TODO:Insert the completed battle sequence here
 		}
+	}
+	
+	static void headToStarlightPath(){
+		System.out.println("I wish I wrote a game :/");
+		//TODO: Create starlight path
+	}
+	
+	static void headToShadowCavern(){
+		System.out.println("\n============="
+				+ "\nShadow Cavern"
+				+ "\n=============");
+		System.out.println(pages[6]);
+		hitEnter();
+		System.out.println(rooms[2]);
+		hitEnter();
+		System.out.println(rooms[3]);
+		neMe.type = "Dwarf";
+		neMe.money = true;
+		neMe.level = 1;
+		neMe.health = (int) (Math.random() * (1.5 * 3) + 2);
+		neMe.damage = (int) (Math.random() * (1.5 * 2) + 1);
+		commenceBattle();
+		do {
+			System.out.println(rooms[4]);
+			choice = Keyboard.keyb.nextLine();
+		} while (!choice.equalsIgnoreCase("proceed") && !choice.equalsIgnoreCase("investigate"));
+
 	}
 
 	/**
@@ -215,7 +230,7 @@ public class Main {
 				p.health -= neMeDmg;
 				if(neMe.health < 1){
 					p.health += neMeDmg;
-					System.out.println("p.name" + " used slash dealing " + playerDmg + "Atk");
+					System.out.println(p.name + " used slash dealing " + playerDmg + "Atk");
 				}else if(p.health < 1){
 					System.out.println("The " + neMe.type + " used tackle dealing " + neMeDmg + "Atk");
 				}else{
