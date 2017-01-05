@@ -10,24 +10,31 @@ public class Player {
 	static int experienceNeeded = 10;
 
 	/**
-	 * If the character levels up
-	 * Multiply the experience needed by the level
-	 * Increases the heal and attack damage by a random number
-	 * Print out new stats
+	 * If the character levels up Multiply the experience needed by the level
+	 * Increases the heal and attack damage by a random number Print out new
+	 * stats
 	 */
 	public static void levelUp() {
+		int temp;
+		int bonusHealth;
 		if (experience >= experienceNeeded) {
 			level++;
-			int temp = experience % experienceNeeded;
+			temp = experience % experienceNeeded;
 			experienceNeeded = 10 * level;
 			experience = temp;
-			temp = (int) (Math.random() * (1.5 * 2) + 2);
-			int bonusHealth = (int) (Math.random() * (1.5 * 2) + 3);
+			if (level % 5 == 0) {
+				temp = (int) (Math.random() * (3 * 4) + 2);
+				bonusHealth = (int) (Math.random() * (3 * 4) + 3);
+			} else {
+				temp = (int) (Math.random() * (1.5 * 2) + 2);
+				bonusHealth = (int) (Math.random() * (1.5 * 2) + 3);
+			}
 			System.out.println("\nYou have leveled up!" + "\nlv." + level + " " + name + "\n+" + bonusHealth + " HP"
 					+ "\n+" + temp + " Atk\n\nExperience until next level up:" + experienceNeeded);
 			damage += temp;
 			health += bonusHealth;
-			System.out.println("\nLv." + level + " " + name + " >> " + getPlayerHealthBar() + " Atk:" + damage + " " + experience + "exp");
+			System.out.println("\nLv." + level + " " + name + " >> " + getPlayerHealthBar() + " Atk:" + damage + " "
+					+ experience + "exp");
 		}
 	}
 
