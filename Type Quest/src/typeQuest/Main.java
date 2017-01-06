@@ -6,6 +6,10 @@ package typeQuest;
  *
  */
 public class Main {
+	/**
+	 * If game is completed
+	 * Created player classes
+	 */
 	static Player p = new Player();
 	static Enemy neMe = new Enemy();
 	static String choice = "";
@@ -133,8 +137,31 @@ public class Main {
 	 */
 	static void headToStarlightPath() {
 		System.out.println("\n==============\nStarlight Path\n==============");
-		System.out.println("I wish I wrote a game :/");
-		// TODO: Create starlight path
+		System.out.println(pages[7]);
+		do{
+			System.out.println(rooms[15]);
+			choice = Keyboard.keyb.nextLine();
+		}while(!choice.equalsIgnoreCase("proceed") && !choice.equalsIgnoreCase("investigate"));
+		if(choice.equalsIgnoreCase("investigate")){
+			do{
+				System.out.println(rooms[16]);
+				//TODO: Add a paralyze antidote to inventory
+				choice = Keyboard.keyb.nextLine();
+			}while(!choice.equalsIgnoreCase("proceed") && !choice.equalsIgnoreCase("further"));		
+			if(choice.equalsIgnoreCase("further")){
+				System.out.println(rooms[17]);
+				neMe.basicAbility = "Stab";
+				neMe.type = "Reptilian Humanoid";
+				neMe.level = 2;
+				neMe.health = (int) (Math.random() * (1.5 * 3) + 3);
+				neMe.damage = (int) (Math.random() * (1.5 * 2) + 2);
+				neMe.money = false;
+				commenceBattle();
+				System.out.println("\nThere may be more enemies further ahead. You decide to head back the trail and"
+						+ "\ncontinue on with your quest");
+			}
+			System.out.println(rooms[18]);
+		}
 	}
 
 	/**
@@ -164,8 +191,8 @@ public class Main {
 		}
 		System.out.println(rooms[5]);
 		neMe.level = 2;
-		neMe.money = false;
-		neMe.type = "Loogaroo";
+		neMe.money = true;
+		neMe.type = "Giant Rat";
 		neMe.basicAbility = "Bite";
 		neMe.damage = (int) (Math.random() * (1.5 * 2) + 3);
 		neMe.health = (int) (Math.random() * (1.5 * 3) + 4);
@@ -181,7 +208,7 @@ public class Main {
 		System.out.println(rooms[7]);
 		neMe.level = 4;
 		neMe.money = true;
-		neMe.type = "Ahool";
+		neMe.type = "Bat Humanoid";
 		neMe.basicAbility = "Wing Swipe";
 		neMe.damage = (int) (Math.random() * (1.5 * 2) + 5);
 		neMe.health = (int) (Math.random() * (1.5 * 3) + 9);
@@ -197,7 +224,7 @@ public class Main {
 		}
 		System.out.println(rooms[9]);
 		neMe.level = 5;
-		neMe.money = true;
+		neMe.money = false;
 		neMe.type = "Lindworm";
 		neMe.basicAbility = "Tackle";
 		neMe.damage = (int) (Math.random() * (1.5 * 2) + 8);
@@ -215,7 +242,7 @@ public class Main {
 		System.out.println(rooms[11]);
 		neMe.level = 9;
 		neMe.money = true;
-		neMe.type = "Cerastes";
+		neMe.type = "Giant Snake";
 		neMe.basicAbility = "Squeeze";
 		neMe.damage = (int) (Math.random() * (1.5 * 2) + 7);
 		neMe.health = (int) (Math.random() * (1.5 * 3) + 18);
@@ -262,7 +289,8 @@ public class Main {
 		pages[6] = new Page(
 				"\nYou had decided to go down Shadow Cavern. Just like the name, the cavern looks too dark to see anything"
 						+ "\nYou can hear the drops of water hitting the floor but other than that, it is quiet but you can sense danger. Be prepared!");
-		pages[7] = new Page("");
+		pages[7] = new Page("You have decided to go down Starlight Path. The path looks really peaceful and quiet"
+				+ "\nThis should be a nice and easy journey towards Jack-E's castle.");
 		// Rooms
 		rooms[0] = new Room("You are now in the woods outside your town following the footprints left behind. "
 				+ "\nShould we \"proceed\" or \"investigate\"?");
@@ -311,7 +339,20 @@ public class Main {
 		rooms[14] = new Room("Having your new weapon, you swing the weapon around at some trees and bushes when you"
 				+ "\nuncover a hidden path you didn't see. You walk through the path to find a goblin!");
 		// Starlight Path
-		rooms[15] = new Room("");
+		rooms[15] = new Room("The path is bordered by beautiful yellow flowers, nothings seems to be a problem"
+				+ "\nI think I made the best choice, this is going to be a walk in the park."
+				+ "\nWhat should we do? (\"Proceed\" or \"Investigate\"?)");
+		rooms[16] = new Room("You poke your head into the flowers and find a paralyze antidote"
+				+ "\n\nYou have obtained:\n+1 Paralyze Antidote\n"
+				+ "\nShould we adventure “further” out or “continue” on with our quest?");
+		rooms[17] = new Room("You adventure further into the flowers to find yourself face to face with a Reptilian Humanoid");
+		rooms[18] = new Room("You go back to the main trial and continue on with the quest"
+				+ "\n\nIn the far distance you can see something very large. You continue to follow the path only to "
+				+ "\nfind a 8ft tall human standing before you. Before you have the chance the speak, it swings a bat at you.");
+		rooms[19] = new Room("");
+		rooms[20] = new Room("");
+		rooms[21] = new Room("");
+		rooms[22] = new Room("");
 	}
 
 	/**
@@ -320,7 +361,7 @@ public class Main {
 	 * 
 	 */
 	public static void commenceBattle() {
-		// TODO: Have specified abilities for the characters
+		// TODO: Have specified abilities for the characters (Not in F-spec)
 		int playerDmg;
 		int neMeDmg;
 		String battleChoice = "";
