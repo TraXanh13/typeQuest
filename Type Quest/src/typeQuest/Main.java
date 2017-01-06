@@ -54,6 +54,14 @@ public class Main {
 		System.out.println("\n-Hit Enter to Continue-");
 		Keyboard.keyb.nextLine();
 	}
+	
+	static void shallWeProceed() {
+		do {
+			System.out.println("Should we \"proceed\" or \"investigate\"?");
+			choice = Keyboard.keyb.nextLine();
+		} while (!choice.equalsIgnoreCase("Proceed")
+				&& !choice.equalsIgnoreCase("Investigate"));
+	}
 
 	/**
 	 * Forces the user to proceed
@@ -80,10 +88,8 @@ public class Main {
 		} else {
 			System.out.println("\n*Your hero leaves Northbury*");
 		}
-		do {
 			System.out.println(rooms[0]);
-			choice = Keyboard.keyb.nextLine();
-		} while (!choice.equalsIgnoreCase("proceed") && !choice.equalsIgnoreCase("investigate"));
+		shallWeProceed();
 		if (choice.equalsIgnoreCase("investigate")) {
 			System.out.println(rooms[13]);
 			do {
@@ -138,10 +144,8 @@ public class Main {
 	static void headToStarlightPath() {
 		System.out.println("\n==============\nStarlight Path\n==============");
 		System.out.println(pages[7]);
-		do{
 			System.out.println(rooms[15]);
-			choice = Keyboard.keyb.nextLine();
-		}while(!choice.equalsIgnoreCase("proceed") && !choice.equalsIgnoreCase("investigate"));
+			shallWeProceed();
 		if(choice.equalsIgnoreCase("investigate")){
 			do{
 				System.out.println(rooms[16]);
@@ -150,8 +154,8 @@ public class Main {
 			}while(!choice.equalsIgnoreCase("proceed") && !choice.equalsIgnoreCase("further"));		
 			if(choice.equalsIgnoreCase("further")){
 				System.out.println(rooms[17]);
-				neMe.basicAbility = "Stab";
 				neMe.type = "Reptilian Humanoid";
+				neMe.basicAbility = "Stab";
 				neMe.level = 2;
 				neMe.health = (int) (Math.random() * (1.5 * 3) + 3);
 				neMe.damage = (int) (Math.random() * (1.5 * 2) + 2);
@@ -161,6 +165,17 @@ public class Main {
 						+ "\ncontinue on with your quest");
 			}
 			System.out.println(rooms[18]);
+			neMe.type = "Giant";
+			neMe.basicAbility = "Smash";
+			neMe.level = 5;
+			neMe.health = (int) (Math.random() * (1.5 * 3) + 7);
+			neMe.damage = (int) (Math.random() * (1.5 * 2) + 3);
+			neMe.money = false;
+			commenceBattle();
+			System.out.println(rooms[19]);
+			shallWeProceed();
+			if(choice.equalsIgnoreCase("investigate"))System.out.println("You poke your head into the flowers. There is nothing in this area");
+			System.out.println("You continue around the corner. The sun is starting to set now. The sky is painted with an array of pink, orange, and yellow. It is truly mesmerizing.");
 		}
 	}
 
@@ -181,10 +196,8 @@ public class Main {
 		neMe.health = (int) (Math.random() * (1.5 * 3) + 2);
 		neMe.damage = (int) (Math.random() * (1.5 * 2) + 1);
 		commenceBattle();
-		do {
 			System.out.println(rooms[4]);
-			choice = Keyboard.keyb.nextLine();
-		} while (!choice.equalsIgnoreCase("proceed") && !choice.equalsIgnoreCase("investigate"));
+			shallWeProceed();
 		// If the user chooses to investigate
 		if (choice.equalsIgnoreCase("investigate")) {
 			System.out.println("You look around but it is too hard to see anything so you proceed");
@@ -197,10 +210,8 @@ public class Main {
 		neMe.damage = (int) (Math.random() * (1.5 * 2) + 3);
 		neMe.health = (int) (Math.random() * (1.5 * 3) + 4);
 		commenceBattle();
-		do {
-			System.out.println(rooms[6]);
-			choice = Keyboard.keyb.nextLine();
-		} while (!choice.equalsIgnoreCase("proceed") && !choice.equalsIgnoreCase("investigate"));
+					System.out.println(rooms[6]);
+			shallWeProceed();
 		// If the user chooses to investigate
 		if (choice.equalsIgnoreCase("investigate")) {
 			System.out.println("You look around but it is too hard to see anything so you proceed");
@@ -213,10 +224,8 @@ public class Main {
 		neMe.damage = (int) (Math.random() * (1.5 * 2) + 5);
 		neMe.health = (int) (Math.random() * (1.5 * 3) + 9);
 		commenceBattle();
-		do {
-			System.out.println(rooms[8]);
-			choice = Keyboard.keyb.nextLine();
-		} while (!choice.equalsIgnoreCase("proceed") && !choice.equalsIgnoreCase("investigate"));
+				System.out.println(rooms[8]);
+			shallWeProceed();
 		// If the user chooses to investigate
 		if (choice.equalsIgnoreCase("investigate")) {
 			// TODO: What happens if you want to investigate?
@@ -230,10 +239,8 @@ public class Main {
 		neMe.damage = (int) (Math.random() * (1.5 * 2) + 8);
 		neMe.health = (int) (Math.random() * (1.5 * 3) + 7);
 		commenceBattle();
-		do {
 			System.out.println(rooms[10]);
-			choice = Keyboard.keyb.nextLine();
-		} while (!choice.equalsIgnoreCase("proceed") && !choice.equalsIgnoreCase("investigate"));
+			shallWeProceed();
 		// If the user chooses to investigate
 		if (choice.equalsIgnoreCase("investigate")) {
 			// TODO: What happens if you want to investigate?
@@ -292,8 +299,7 @@ public class Main {
 		pages[7] = new Page("You have decided to go down Starlight Path. The path looks really peaceful and quiet"
 				+ "\nThis should be a nice and easy journey towards Jack-E's castle.");
 		// Rooms
-		rooms[0] = new Room("You are now in the woods outside your town following the footprints left behind. "
-				+ "\nShould we \"proceed\" or \"investigate\"?");
+		rooms[0] = new Room("You are now in the woods outside your town following the footprints left behind. ");
 		// First fork in the road
 		rooms[1] = new Room(
 				"There is now a fork in the road; one path leads to Shadow Cavern, the other leads to Starlight path"
@@ -305,31 +311,27 @@ public class Main {
 				+ "\nThis means WAR!");
 		rooms[4] = new Room("The path keeps getting darker the further you go"
 				+ "\nAlthough you killed the Dwarf, you still feel like you are being watched"
-				+ "\nThe feeling keeps getting worst, what could it be?"
-				+ "\nShould we \"proceed\" or \"investigate\"?");
+				+ "\nThe feeling keeps getting worst, what could it be?");
 		rooms[5] = new Room("You are in an open area of the cavern, here you are able to see your surroundings"
 				+ "\nThe cave looks damp but other than that, nothing seems out of place"
 				+ "\nYou start to hear rustling and the sounds of someone walking up to you"
 				+ "\n\n*It steps into the light*\n"
-				+ "\nIt's a Loogaroo! Quickly, kill it before it can suck all your blood!");
+				+ "\nIt's a Giant Rat! Quickly, kill it before it can suck all your blood!");
 		rooms[6] = new Room("It looks like it is just a long dark walkway from here..."
-				+ "\nYou have a feeling that you are being watched more closely... WHAT IS IT?!"
-				+ "\nShould we \"proceed\" or \"investigate\"?");
+				+ "\nYou have a feeling that you are being watched more closely... WHAT IS IT?!");
 		rooms[7] = new Room("It's another opening, but it is very dark in here. It makes it kind of hard to see"
 				+ "\nA rock hits your shoulder, you look up"
-				+ "\nAn Ahool swoops down befores you and begins to attack, fight your way out of this one");
+				+ "\nA bat Humanoid swoops down befores you and begins to attack, fight your way out of this one");
 		rooms[8] = new Room("There is nothing new with the cave... Still dark and damp..."
-				+ "\nAnd you still feel like you are being watched... I'm not sure what you think would happen"
-				+ "\nShould we \"proceed\" or \"investigate\"?");
+				+ "\nAnd you still feel like you are being watched... I'm not sure what you think would happen");
 		rooms[9] = new Room("You come across a body of water within the cave, if you follow it you can get out!"
 				+ "\n*You begin to follow the water when you hear a splash from behind*"
 				+ "\nYou turn to see a Lindworm heading your direction!");
 		rooms[10] = new Room("You continue to follow the water into the unknown darkness"
-				+ "\nYou still have the unsettling feeling that something big has yet to come"
-				+ "\nShould we \"proceed\" or \"investigate\"?");
+				+ "\nYou still have the unsettling feeling that something big has yet to come");
 		rooms[11] = new Room("You can see a faint light coming from the distance, you must be nearing the end!"
 				+ "\n*Your hero sprints to the end" + "\n*THUD*"
-				+ "\nYou hit some soft object and get propelled backwards" + "\nA Cerastes stands before you");
+				+ "\nYou hit some soft object and get propelled backwards" + "\nA Giant Snake stands before you");
 		rooms[12] = new Room("You made it though the caves system in one piece!"
 				+ "\nYou are more than half way to the Jack-E's castle");
 		// Exploration outside the town
@@ -340,8 +342,7 @@ public class Main {
 				+ "\nuncover a hidden path you didn't see. You walk through the path to find a goblin!");
 		// Starlight Path
 		rooms[15] = new Room("The path is bordered by beautiful yellow flowers, nothings seems to be a problem"
-				+ "\nI think I made the best choice, this is going to be a walk in the park."
-				+ "\nWhat should we do? (\"Proceed\" or \"Investigate\"?)");
+				+ "\nI think I made the best choice, this is going to be a walk in the park.");
 		rooms[16] = new Room("You poke your head into the flowers and find a paralyze antidote"
 				+ "\n\nYou have obtained:\n+1 Paralyze Antidote\n"
 				+ "\nShould we adventure “further” out or “continue” on with our quest?");
@@ -349,7 +350,7 @@ public class Main {
 		rooms[18] = new Room("You go back to the main trial and continue on with the quest"
 				+ "\n\nIn the far distance you can see something very large. You continue to follow the path only to "
 				+ "\nfind a 8ft tall human standing before you. Before you have the chance the speak, it swings a bat at you.");
-		rooms[19] = new Room("");
+		rooms[19] = new Room("The path from here just cuts off suddenly. I think there is a turn up ahead. I don’t think there is anywhere else to go");
 		rooms[20] = new Room("");
 		rooms[21] = new Room("");
 		rooms[22] = new Room("");
@@ -444,8 +445,9 @@ public class Main {
 				System.out.println("\n\n\n-Would you like to play again? (\"yes\" or \"no\")-");
 				choice = Keyboard.keyb.nextLine();
 			} while (!choice.equalsIgnoreCase("yes") && !choice.equalsIgnoreCase("no"));
-			if (choice.equalsIgnoreCase("yes"))
-				mainMenu();
+			if (choice.equalsIgnoreCase("no")){
+				mainMenu();				
+			}
 		}
 	}
 
