@@ -1,5 +1,7 @@
 package typeQuest;
 
+import java.util.ArrayList;
+
 /**
  * 
  * @author minia
@@ -15,6 +17,7 @@ public class Main {
 	static String choice = "";
 	static Room[] rooms = new Room[44];
 	static Page[] pages = new Page[12];
+	static ArrayList<Item> item = new ArrayList<Item>();
 
 	public static void main(String[] args) {
 		p.health = (int) (Math.random() * (1.5 * 5) + 6);
@@ -354,6 +357,7 @@ public class Main {
 		rooms[20] = new Room("");
 		rooms[21] = new Room("");
 		rooms[22] = new Room("");
+		
 	}
 
 	/**
