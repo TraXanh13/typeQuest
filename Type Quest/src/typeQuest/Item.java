@@ -5,44 +5,57 @@ package typeQuest;
  */
 public class Item {
 	// Properties of the item
-	int total;
-	int amount;
-	String type;
-	String description;
-	int price;
+	private int amount;
+	private String type;
+	private int price;
+	private String description;
+	private Item nextItem;
+	
+	Item(int amount, String type, String description, int price){
+		this.setAmount(amount);
+		this.setType(type);
+		this.setPrice(price);
+		this.setDescription(description);
+	}
 
-	public Item(int amount, String type, String description, int price) {
-		this.type = type;
-		this.amount = amount;
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Item getNextItem() {
+		return nextItem;
+	}
+
+	public void setNextItem(Item items) {
+		this.nextItem = items;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
 		this.price = price;
 	}
-
-	/**
-	 * Add to the total amount the player is holding
-	 */
-	void addInventoryCount() {
-		total += amount;
-	}
-
-	/**
-	 * Constructor Creates the item with parameters passed from the main
-	 * Only creates item if there is space in the bag
-	 * 
-	 * explain what the params are
-	 * @param amount
-	 * @param type
-	 * @param description
-	 * @param price
-	 */
-	public void createTheGoodies(int amount, String type, String description, int price) {
-		
-	}
-
-	/*
-	 * public String toString() {
-	 * return "you have " + ;
-	 * }
-	 */
 		
 }

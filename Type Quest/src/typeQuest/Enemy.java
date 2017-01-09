@@ -1,6 +1,6 @@
 package typeQuest;
 
-public class Enemy{
+public class Enemy extends Character{
 	String type = "";
 	String basicAbility = "";
 	boolean money;

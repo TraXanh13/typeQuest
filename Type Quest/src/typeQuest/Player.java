@@ -1,6 +1,6 @@
 package typeQuest;
 
-public class Player {
+public class Player extends Character{
 	String name;
 	int experience = 0;
 	int money = 0;
