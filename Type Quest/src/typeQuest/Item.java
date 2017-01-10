@@ -7,23 +7,11 @@ public class Item {
 	// Properties of the item
 	private int amount;
 	private String type;
-	private int price;
-	private String description;
 	private Item nextItem;
 	
-	Item(int amount, String type, String description, int price){
+	Item(int amount, String type){
 		this.setAmount(amount);
 		this.setType(type);
-		this.setPrice(price);
-		this.setDescription(description);
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 	public Item getNextItem() {
@@ -48,14 +36,5 @@ public class Item {
 
 	public void setType(String type) {
 		this.type = type;
-	}
-
-	public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
-		
+	}		
 }

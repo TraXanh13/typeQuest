@@ -1,15 +1,28 @@
 package typeQuest;
 
 public class Enemy extends Character{
-	String type = "";
 	String basicAbility = "";
 	boolean money;
-	int health;
-	int damage;
-	int level;
 
+	/**
+	 * Print out the enemies health in '*'
+	 * 
+	 * @return
+	 */
+	public String getEnemyHealthBar() {
+		String neMeHp = "Hp:";
+		if (health < 51) {
+			for (int i = 0; i < health; i++) {
+				neMeHp += '*';
+			}
+			return neMeHp;
+		} else {
+			return "HP:" + health;
+		}
+	}
+	
 	// @Override
 	public String toString() {
-		return "Lv." + level + " " + type;
+		return "Lv." + level + " " + name;
 	}
 }

@@ -30,7 +30,7 @@ private Item firstItem;
 		String temp = "";
 		Item i = this.getFirstItem();
 		while(i != null){
-			temp += i.getDescription() + "\n";
+			temp += i.getType() + "\n";
 			i = i.getNextItem();
 		}
 		return temp;

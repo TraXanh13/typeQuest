@@ -1,12 +1,8 @@
 package typeQuest;
 
 public class Player extends Character{
-	String name;
 	int experience = 0;
 	int money = 0;
-	int health;
-	int damage;
-	int level = 1;
 	int experienceNeeded = 10;
 
 	/**
@@ -34,7 +30,7 @@ public class Player extends Character{
 			damage += temp;
 			health += bonusHealth;
 			System.out.println("\nLv." + level + " " + name + " >> " + getPlayerHealthBar() + " Atk:" + damage + " "
-					+ experience + "exp");
+					+ experience + "exp\n");
 		}
 	}
 
