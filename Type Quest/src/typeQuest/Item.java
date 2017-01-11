@@ -11,8 +11,7 @@ public class Item {
 	private String type;
 	private Item nextItem;
 	
-	Item(int amount, String type){
-		this.setAmount(amount);
+	Item(String type){
 		this.setType(type);
 	}
 

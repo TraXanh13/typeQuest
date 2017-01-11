@@ -63,16 +63,16 @@ public class Main {
 	static void getItem() {
 		int temp = (int) (Math.random() * 4 + 1);
 		if (temp == 1) {
-			p.inventory.add(new Item(1, "Potion"));
+			p.inventory.add(new Item("Potion"));
 			System.out.println("\nYou have obtained:\n+1 Potion\n");
 		} else if (temp == 2) {
-			p.inventory.add(new Item(1, "Super Potion"));
+			p.inventory.add(new Item( "Super Potion"));
 			System.out.println("\nYou have obtained:\n+1 Super Potion\n");
 		} else if (temp == 3) {
-			p.inventory.add(new Item(1, "Paralyze Antidote"));
+			p.inventory.add(new Item("Paralyze Antidote"));
 			System.out.println("\nYou have obtained:\n+1 Paralyze Antidote\n");
 		} else if (temp == 4) {
-			p.inventory.add(new Item(1, "Poison Antidote"));
+			p.inventory.add(new Item("Poison Antidote"));
 			System.out.println("\nYou have obtained:\n+1 Poison Antidote\n");
 		}
 		System.out.println(p.inventory);
@@ -82,9 +82,9 @@ public class Main {
 	 * Everything up to the fork in the road
 	 */
 	public static void storyBegins() {
-		p.inventory.add(new Item(1, "Poison Antidote"));
-		p.inventory.add(new Item(1, "Paralyze Antidote"));
-		p.inventory.add(new Item(1, "Potion"));
+		p.inventory.add(new Item("Poison Antidote"));
+		p.inventory.add(new Item("Paralyze Antidote"));
+		p.inventory.add(new Item("Potion"));
 		for (int i = 0; i <= 5; i++) {
 			System.out.println(pages[i]);
 			if (i == 2) {
@@ -350,16 +350,16 @@ public class Main {
 						"\n1.Potion 10 gold\n2.Super Potion 20 gold\n3.Paralyze Antidote 15 gold\n4.Poison Antidote 15 gold\n-Leave-");
 				choice = Keyboard.keyb.nextLine();
 				if (p.money >= 10 && choice.equals("1")) {
-					p.inventory.add(new Item(1, "Potion"));
+					p.inventory.add(new Item("Potion"));
 					p.money -= 10;
 				} else if (p.money >= 20 && choice.equals("2")) {
-					p.inventory.add(new Item(1, "Super Potion"));
+					p.inventory.add(new Item("Super Potion"));
 					p.money -= 20;
 				} else if (p.money >= 15 && choice.equals("3")) {
-					p.inventory.add(new Item(1, "Paralyze Antidote"));
+					p.inventory.add(new Item("Paralyze Antidote"));
 					p.money -= 15;
 				} else if (p.money >= 15 && choice.equals("4")) {
-					p.inventory.add(new Item(1, "Poison Antidote"));
+					p.inventory.add(new Item("Poison Antidote"));
 					p.money -= 15;
 				}
 			} while (!choice.equalsIgnoreCase("leave"));

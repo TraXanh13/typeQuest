@@ -5,6 +5,8 @@ public class Character {
 	int health = 10;
 	int damage;
 	int level = 1;
+	Item firstItem;
+	static String choice;
 
 	/**
 	 * Battle sequence Creates the atk dmg for the upcoming turn Asks the user
@@ -66,7 +68,6 @@ public class Character {
 	}
 
 	static void useItem(Player p) {
-		String choice;
 		System.out.println("Your items consist of:" + p.inventory);
 		do {
 			System.out.println("Which item would you like to use?");
@@ -78,17 +79,64 @@ public class Character {
 			if (p.health < p.maxHealth) {
 				p.health += 10;
 				System.out.println("You have been healed for 10");
+				removeItem(p);
+			} else {
+				System.out.println("You cannot be healed anymore!");
 			}
 		} else if (choice.equalsIgnoreCase("Super Potion")) {
 			if (p.health < p.maxHealth) {
 				p.health += 20;
 				System.out.println("You have been healed for 20");
+				p.inventory.remove("Super Potion");
+				removeItem(p);
+			} else {
+				System.out.println("You cannot be healed anymore!");
 			}
 		} else if (choice.equalsIgnoreCase("Paralyze Antidote")) {
 			System.out.println("This does nothing");
+			removeItem(p);
 		} else {
 			System.out.println("This also does nothing");
+			removeItem(p);
 		}
+	}
+
+	static void removeItem(Player p) {
+		for (int i = 0; i < p.inventory.size(); i++) {
+			if(choice.equals(p.inventory.get(i))){
+				p.inventory.remove(i);
+				System.out.println(p.inventory);
+				break;
+			}
+		}
+		
+		/*Item temp = this.getFirstItem();
+		if (temp == null) {
+			// Nothing happens if inventory is empty
+		} else if (temp.getType().equalsIgnoreCase(type)) {
+			// Replaces the first item with the second item
+			this.setFirstItem(temp.getNextItem());
+		} else {
+			// If the first item isn't what we were looking for
+			while (temp.getNextItem() != null) {
+				// Loops as long as next item exists
+				if (temp.getNextItem().getType().equalsIgnoreCase(type)) {
+					temp.setNextItem(temp.getNextItem().getNextItem());
+					break;
+				} else {
+					// Move to the next item
+					temp = temp.getNextItem();
+				}
+			}
+		}*/
+	}
+
+	public Item getFirstItem() {
+		return firstItem;
+	}
+
+	public void setFirstItem(Item firstItem) {
+		this.firstItem = firstItem;
 	}
 
 	static void endGame(Player p) {
