@@ -2,7 +2,7 @@ package typeQuest;
 
 public class Character {
 	String name = "";
-	int health;
+	int health = 10;
 	int damage;
 	int level = 1;
 
@@ -16,39 +16,36 @@ public class Character {
 		int playerDmg;
 		int neMeDmg;
 		String battleChoice = "";
-		System.out.println("\nYou have encountered a " + neMe + " >> "
-				+ neMe.getEnemyHealthBar() + " Atk:" + neMe.damage);
-		System.out.println("\n" + p.name + " >> " + p.getPlayerHealthBar()
-				+ " Atk:" + p.damage);
+		System.out.println(
+				"\nYou have encountered a " + neMe + " >> " + neMe.getEnemyHealthBar() + " Atk:" + neMe.damage);
+		System.out.println("\nLv." + p.level + " " + p.name + " >> " + p.getPlayerHealthBar() + " Atk:" + p.damage);
 		do {
 			// Creates a random damage based on the characters attack damage
 			neMeDmg = (int) (Math.random() * (1.5 * 2) + neMe.damage);
 			playerDmg = (int) (Math.random() * (1.5 * 2) + p.damage);
 			do {
-				System.out
-						.println("What would you like to do?\nAttack\nInventory");
+				System.out.println("What would you like to do?\nAttack\nInventory");
 				battleChoice = Keyboard.keyb.nextLine();
-			} while (!battleChoice.equalsIgnoreCase("attack")
-					&& !battleChoice.equalsIgnoreCase("inventory"));
-			if (battleChoice.equalsIgnoreCase("attack")) {
+			} while (!battleChoice.equalsIgnoreCase("attack") && !battleChoice.equalsIgnoreCase("inventory"));
+			if (battleChoice.equalsIgnoreCase("inventory")) {
+				useItem(p);
+				p.health -= neMeDmg;
+				System.out.println(neMe.name + " used " + neMe.basicAbility + " dealing " + neMeDmg + "Atk");
+			} else {
 				neMe.health -= playerDmg;
 				p.health -= neMeDmg;
 				// If the enemy dies
 				if (neMe.health < 1) {
 					p.health += neMeDmg;
-					System.out.println(p.name + " used slash dealing "
-							+ playerDmg + "Atk");
+					System.out.println(p.name + " used slash dealing " + playerDmg + "Atk");
 					// If the user dies
 				} else {
-					System.out.println(p.name + " used slash dealing "
-							+ playerDmg + "Atk\nThe " + neMe.name
-							+ " used tackle dealing " + neMeDmg + "Atk");
+					System.out.println(p.name + " used slash dealing " + playerDmg + "Atk\nThe " + neMe.name + " used "
+							+ neMe.basicAbility + " dealing " + neMeDmg + "Atk");
 				}
-			} else {
-				useItem(p, null);
 			}
-			System.out.println("\n" + p + " " + p.getPlayerHealthBar() + "\n"
-					+ neMe + " " + neMe.getEnemyHealthBar() + "\n");
+			System.out.println(
+					"\n" + p + " " + p.getPlayerHealthBar() + "\n" + neMe + " " + neMe.getEnemyHealthBar() + "\n");
 		} while (neMe.health > 0 && p.health > 0);
 		// If the user happens to die
 		if (p.health < 1)
@@ -58,41 +55,56 @@ public class Character {
 		if (neMe.money = true) {
 			int goldEarned = (int) (Math.random() * (1.5 * 5) + neMe.level);
 			p.money += goldEarned;
-			System.out.println("You have defeated " + neMe.name + " gaining "
-					+ exp + "exp" + "\nYou have also acquired " + goldEarned
-					+ " Gold");
+			System.out.println("You have defeated " + neMe.name + " gaining " + exp + "exp"
+					+ "\nYou have also acquired " + goldEarned + " Gold\n");
 			// If no gold is obtained
 		} else {
-			System.out.println("You have defeated " + neMe.name + " gaining "
-					+ exp + "exp");
+			System.out.println("You have defeated " + neMe.name + " gaining " + exp + "exp\n");
 		}
 		p.experience += exp;
 		p.levelUp();
 	}
-	
-	static void useItem(Player p, Inventory inventory){
-		
+
+	static void useItem(Player p) {
+		String choice;
+		System.out.println("Your items consist of:" + p.inventory);
+		do {
+			System.out.println("Which item would you like to use?");
+			choice = Keyboard.keyb.nextLine();
+		} while (!choice.equalsIgnoreCase("Potion") && !choice.equalsIgnoreCase("Super Potion")
+				&& !choice.equalsIgnoreCase("Poison Antidote") && !choice.equalsIgnoreCase("Paralyze Antidote")
+				&& !p.inventory.contains(choice));
+		if (choice.equalsIgnoreCase("Potion")) {
+			if (p.health < p.maxHealth) {
+				p.health += 10;
+				System.out.println("You have been healed for 10");
+			}
+		} else if (choice.equalsIgnoreCase("Super Potion")) {
+			if (p.health < p.maxHealth) {
+				p.health += 20;
+				System.out.println("You have been healed for 20");
+			}
+		} else if (choice.equalsIgnoreCase("Paralyze Antidote")) {
+			System.out.println("This does nothing");
+		} else {
+			System.out.println("This also does nothing");
+		}
 	}
 
 	static void endGame(Player p) {
 		if (p.health > 0) {
-			System.out
-					.println("You took the key off the prison guard and released the \nprincess from her cell.  You and the Princess return to Northbury.\n-End-");
+			System.out.println(
+					"You took the key off the prison guard and released the \nprincess from her cell.  You and the Princess return to Northbury.\n-End-");
+			System.exit(0);
 		} else {
 			System.out.println("You have died... You let us down...");
+			System.exit(0);
 		}
-		/*
-		 * do { String choice; System.out
-		 * .println("\n\n-Would you like to play again? (\"yes\" or \"no\")-");
-		 * choice = Keyboard.keyb.nextLine(); } while
-		 * (!choice.equalsIgnoreCase("yes") && !choice.equalsIgnoreCase("no"));
-		 * if (choice.equalsIgnoreCase("yes")) { mainMenu();
-		 */
 	}
 
 	public String toString() {
 		String temp = "";
-		temp += "Lv." + level + " ";
+		temp += "Lv." + level + " " + name;
 		return temp;
 	}
 }

@@ -1,6 +1,8 @@
 package typeQuest;
 
 /**
+ * 
+ * @Author Mr. Prowse
  * Creates the items that will be placed in an inventory
  */
 public class Item {
@@ -30,11 +32,15 @@ public class Item {
 		this.amount = amount;
 	}
 
+	public void setType(String type){
+		this.type = type;
+	}
+	
 	public String getType() {
 		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
 	}		
+	
+	public String toString() {
+		return type;
+	}
 }
