@@ -103,7 +103,7 @@ public class Character {
 
 	static void removeItem(Player p) {
 		for (int i = 0; i < p.inventory.size(); i++) {
-			if(choice.equals(p.inventory.get(i))){
+			if(p.inventory.get(i).type.equalsIgnoreCase(choice)){
 				p.inventory.remove(i);
 				System.out.println(p.inventory);
 				break;

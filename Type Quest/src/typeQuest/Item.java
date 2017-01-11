@@ -8,7 +8,7 @@ package typeQuest;
 public class Item {
 	// Properties of the item
 	private int amount;
-	private String type;
+	String type;
 	private Item nextItem;
 	
 	Item(String type){

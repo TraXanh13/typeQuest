@@ -54,9 +54,8 @@ public class Player extends Character {
 	}
 
 	/**
-	 * Print out the players health in '*'
-	 * 
-	 * @return
+	 *  
+	 * @return players health in "*"
 	 */
 	public String getPlayerHealthBar() {
 		String playerHp = "Hp:";
