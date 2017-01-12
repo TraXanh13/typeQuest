@@ -9,12 +9,17 @@ public class Character {
 	static String choice;
 
 	/**
-	 * Battle sequence Creates the atk dmg for the upcoming turn Asks the user
-	 * to attack or use inventory
+	 * Battle sequence between the user and enemy
 	 * 
+	 * @param neMe uses the stats of the enemies
+	 * @param p uses the stats of the player
 	 */
 	public static void commenceBattle(Enemy neMe, Player p) {
-		// TODO: Have specified abilities for the characters (Not in F-spec)
+		/*
+		 * int, a class specific var for random damage depending on player strength
+		 * int, a class specific var for random damage depending on enemy strength
+		 * String, holds the decisions the user makes
+		 */
 		int playerDmg;
 		int neMeDmg;
 		String battleChoice = "";
@@ -26,18 +31,22 @@ public class Character {
 			neMeDmg = (int) (Math.random() * (1.5 * 2) + neMe.damage);
 			playerDmg = (int) (Math.random() * (1.5 * 2) + p.damage);
 			do {
+				//Ask the user to attack or use inventory
 				System.out.println("What would you like to do?\nAttack\nInventory");
 				battleChoice = Keyboard.keyb.nextLine();
 			} while (!battleChoice.equalsIgnoreCase("attack") && !battleChoice.equalsIgnoreCase("inventory"));
 			if (battleChoice.equalsIgnoreCase("inventory")) {
 				useItem(p);
+				//After the user uses an item, enemy attacks
 				p.health -= neMeDmg;
 				System.out.println(neMe.name + " used " + neMe.basicAbility + " dealing " + neMeDmg + "Atk");
 			} else {
+				//If the user decides to attack
 				neMe.health -= playerDmg;
 				p.health -= neMeDmg;
 				// If the enemy dies
 				if (neMe.health < 1) {
+					//returned the health the player lost
 					p.health += neMeDmg;
 					System.out.println(p.name + " used slash dealing " + playerDmg + "Atk");
 					// If the user dies
@@ -49,12 +58,14 @@ public class Character {
 			System.out.println(
 					"\n" + p + " " + p.getPlayerHealthBar() + "\n" + neMe + " " + neMe.getEnemyHealthBar() + "\n");
 		} while (neMe.health > 0 && p.health > 0);
-		// If the user happens to die
+		//Continuous looping until someone dies
 		if (p.health < 1)
+			// If the user happens to die
 			endGame(p);
 		int exp = (int) (Math.random() * (5 * neMe.level) + neMe.level);
-		// If the user is able to pick up gold
+		//Randomly generated experience depending on enemy level
 		if (neMe.money = true) {
+			// If the user is able to pick up gold
 			int goldEarned = (int) (Math.random() * (1.5 * 5) + neMe.level);
 			p.money += goldEarned;
 			System.out.println("You have defeated " + neMe.name + " gaining " + exp + "exp"
@@ -72,9 +83,7 @@ public class Character {
 		do {
 			System.out.println("Which item would you like to use?");
 			choice = Keyboard.keyb.nextLine();
-		} while (!choice.equalsIgnoreCase("Potion") && !choice.equalsIgnoreCase("Super Potion")
-				&& !choice.equalsIgnoreCase("Poison Antidote") && !choice.equalsIgnoreCase("Paralyze Antidote")
-				&& !p.inventory.contains(choice));
+		} while (!choice.equals("Potion") && !choice.equals("Super Potion") && !choice.equals("Poison Antidote"));
 		if (choice.equalsIgnoreCase("Potion")) {
 			if (p.health < p.maxHealth) {
 				p.health += 10;
@@ -101,34 +110,30 @@ public class Character {
 		}
 	}
 
+	/**
+	 * 
+	 * @param p
+	 */
 	static void removeItem(Player p) {
 		for (int i = 0; i < p.inventory.size(); i++) {
-			if(p.inventory.get(i).type.equalsIgnoreCase(choice)){
+			if (p.inventory.get(i).type.equalsIgnoreCase(choice)) {
 				p.inventory.remove(i);
 				System.out.println(p.inventory);
 				break;
 			}
 		}
-		
-		/*Item temp = this.getFirstItem();
-		if (temp == null) {
-			// Nothing happens if inventory is empty
-		} else if (temp.getType().equalsIgnoreCase(type)) {
-			// Replaces the first item with the second item
-			this.setFirstItem(temp.getNextItem());
-		} else {
-			// If the first item isn't what we were looking for
-			while (temp.getNextItem() != null) {
-				// Loops as long as next item exists
-				if (temp.getNextItem().getType().equalsIgnoreCase(type)) {
-					temp.setNextItem(temp.getNextItem().getNextItem());
-					break;
-				} else {
-					// Move to the next item
-					temp = temp.getNextItem();
-				}
-			}
-		}*/
+
+		/*
+		 * Item temp = this.getFirstItem(); if (temp == null) { // Nothing
+		 * happens if inventory is empty } else if
+		 * (temp.getType().equalsIgnoreCase(type)) { // Replaces the first item
+		 * with the second item this.setFirstItem(temp.getNextItem()); } else {
+		 * // If the first item isn't what we were looking for while
+		 * (temp.getNextItem() != null) { // Loops as long as next item exists
+		 * if (temp.getNextItem().getType().equalsIgnoreCase(type)) {
+		 * temp.setNextItem(temp.getNextItem().getNextItem()); break; } else {
+		 * // Move to the next item temp = temp.getNextItem(); } } }
+		 */
 	}
 
 	public Item getFirstItem() {

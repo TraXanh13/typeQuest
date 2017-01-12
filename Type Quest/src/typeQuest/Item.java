@@ -6,8 +6,7 @@ package typeQuest;
  * Creates the items that will be placed in an inventory
  */
 public class Item {
-	// Properties of the item
-	private int amount;
+	// the type of item being created
 	String type;
 	private Item nextItem;
 	
@@ -21,14 +20,6 @@ public class Item {
 
 	public void setNextItem(Item items) {
 		this.nextItem = items;
-	}
-
-	public int getAmount() {
-		return amount;
-	}
-
-	public void setAmount(int amount) {
-		this.amount = amount;
 	}
 
 	public void setType(String type){

@@ -1,7 +1,7 @@
 package typeQuest;
 
 /**
- * 
+ * Runs all the text and story
  * @author minia
  *
  */
