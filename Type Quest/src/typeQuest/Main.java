@@ -395,10 +395,10 @@ public class Main {
 			neMe.damage = (int) (Math.random() * 2);
 			neMe.money = false;
 			Character.commenceBattle(neMe, p);
-			System.out.println(rooms[17]);
+			System.out.println(pages[17]);
 			
 		}else{
-			System.out.println(rooms[16]);
+			System.out.println(pages[16]);
 		}
 		System.out.println(rooms[35]);
 		shallWeProceed();
