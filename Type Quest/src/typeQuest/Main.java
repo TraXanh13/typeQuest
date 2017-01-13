@@ -176,7 +176,7 @@ public class Main {
 				"You continue around the corner. The sun is starting to set now. The sky is painted with an array of pink, orange, and yellow. It is truly mesmerizing.\n"
 						+ rooms[20]);
 		neMe.name = "Ghost";
-		neMe.basicAbility = "Play mate";
+		neMe.basicAbility = "Play Mate";
 		neMe.level = 7;
 		neMe.health = (int) (Math.random() * (1.5 * 2) + 14);
 		neMe.damage = (int) (Math.random() * (1.5 * 2) + 1);
@@ -346,7 +346,7 @@ public class Main {
 		hitEnter();
 		System.out.println(pages[9]);
 		neMe.name = "Guard";
-		neMe.basicAbility = "Spear thrust";
+		neMe.basicAbility = "Spear Thrust";
 		neMe.level = 18;
 		neMe.health = (int) (Math.random() * (1.5 * 10) + 40);
 		neMe.damage = (int) (Math.random() * (1.5 * 7) + 15);
@@ -470,7 +470,8 @@ public class Main {
 		pages[13] = new Page("\"I need to save the princess, move out of my way!\""
 				+ "\n\n\"The Princess is in our possesion, be gone before you regret this!\"\n-Guard");
 		pages[14] = new Page("\"Don't make me use force!\""
-				+ "\n\n\"Ahaha... Don't make me laugh! You don't have any experience. You being here is clearly a fluke! I have been serving\nJack-E for decades! I am respected for being a great warrior! I will protect him with my life\"\n-Guard");
+				+ "\n\n\"Ahaha... Don't make me laugh! You don't have any experience. You being here is clearly a fluke! I have been serving"
+				+ "\nJack-E for decades! I am respected for being a great warrior! I will protect him with my life\"\n-Guard");
 		pages[15] = new Page("\n\"This must be a mistake! I could never lose to the likes of you!\"\n-Guard"
 				+ "\n\nYou ignore the guard and leave him to die a slow death");
 		pages[16] = new Page("You leave the Jack-E alone and continue past him to the next room");

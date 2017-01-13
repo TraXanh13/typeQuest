@@ -48,10 +48,10 @@ public class Character {
 				if (neMe.health < 1) {
 					//returned the health the player lost
 					p.health += neMeDmg;
-					System.out.println(p.name + " used slash dealing " + playerDmg + "Atk");
+					System.out.println(p.name + " used Slash dealing " + playerDmg + "Atk");
 					// If the user dies
 				} else {
-					System.out.println(p.name + " used slash dealing " + playerDmg + "Atk\nThe " + neMe.name + " used "
+					System.out.println(p.name + " used Slash dealing " + playerDmg + "Atk\nThe " + neMe.name + " used "
 							+ neMe.basicAbility + " dealing " + neMeDmg + "Atk");
 				}
 			}
