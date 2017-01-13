@@ -476,7 +476,6 @@ public class Main {
 		pages[16] = new Page("You leave the Jack-E alone and continue past him to the next room");
 		pages[17] = new Page("You killed Jack-E! He wasn't worth much but I guess you got bragging rights!"
 				+ "\n\nYou proceed to the next room");
-		// Rooms
 		rooms[0] = new Room("You are now in the woods outside your town following the footprints left behind. ");
 		// First fork in the road
 		rooms[1] = new Room(
