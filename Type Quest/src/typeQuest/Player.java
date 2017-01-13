@@ -28,7 +28,7 @@ public class Player extends Character {
 		int temp;
 		int bonusHealth;
 		// Checks to see if the exp >= the experience needed to level up
-		if (experience >= experienceNeeded) {
+		while (experience >= experienceNeeded) {
 			level++;
 			temp = experience - experienceNeeded;
 			// Changes the experience needed according to level
@@ -44,7 +44,7 @@ public class Player extends Character {
 			}
 			System.out.println("\nYou have leveled up!" + "\nlv." + level + " " + name + "\n+" + bonusHealth + " HP"
 					+ "\n+" + temp + " Atk\n\nExperience until next level up:" + experienceNeeded);
-			//Increase stats
+			// Increase stats
 			damage += temp;
 			health += bonusHealth;
 			maxHealth += bonusHealth;

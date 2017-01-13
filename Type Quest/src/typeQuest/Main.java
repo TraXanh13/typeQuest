@@ -2,6 +2,7 @@ package typeQuest;
 
 /**
  * Runs all the text and story
+ * 
  * @author minia
  *
  */
@@ -10,7 +11,7 @@ public class Main {
 	static Enemy neMe = new Enemy();
 	static String choice = "";
 	static Room[] rooms = new Room[41];
-	static Page[] pages = new Page[12];
+	static Page[] pages = new Page[20];
 
 	public static void main(String[] args) {
 		p.damage = (int) (Math.random() * (1.5 * 3) + 2);
@@ -43,48 +44,14 @@ public class Main {
 	}
 
 	/**
-	 * Forces the user to interact Proceeds as long as the user hits enter
-	 */
-	public static void hitEnter() {
-		System.out.println("\n-Hit Enter to Continue-");
-		Keyboard.keyb.nextLine();
-	}
-
-	/**
-	 * If user decides to proceed or investigate
-	 */
-	static void shallWeProceed() {
-		do {
-			System.out.println("Should we \"proceed\" or \"investigate\"?");
-			choice = Keyboard.keyb.nextLine();
-		} while (!choice.equalsIgnoreCase("Proceed") && !choice.equalsIgnoreCase("Investigate"));
-	}
-
-	static void getItem() {
-		int temp = (int) (Math.random() * 4 + 1);
-		if (temp == 1) {
-			p.inventory.add(new Item("Potion"));
-			System.out.println("\nYou have obtained:\n+1 Potion\n");
-		} else if (temp == 2) {
-			p.inventory.add(new Item( "Super Potion"));
-			System.out.println("\nYou have obtained:\n+1 Super Potion\n");
-		} else if (temp == 3) {
-			p.inventory.add(new Item("Paralyze Antidote"));
-			System.out.println("\nYou have obtained:\n+1 Paralyze Antidote\n");
-		} else if (temp == 4) {
-			p.inventory.add(new Item("Poison Antidote"));
-			System.out.println("\nYou have obtained:\n+1 Poison Antidote\n");
-		}
-		System.out.println(p.inventory);
-	}
-
-	/**
 	 * Everything up to the fork in the road
 	 */
 	public static void storyBegins() {
+		int num = 0;
 		p.inventory.add(new Item("Poison Antidote"));
 		p.inventory.add(new Item("Paralyze Antidote"));
 		p.inventory.add(new Item("Potion"));
+		System.out.println("You will start with:" +  p.getPlayerHealthBar() + " Atk:" + p.damage);
 		for (int i = 0; i <= 5; i++) {
 			System.out.println(pages[i]);
 			if (i == 2) {
@@ -100,12 +67,16 @@ public class Main {
 					"You are well prepared for adventure ahead. Are you ready to proceed? \n(Type “yes” or “no”)");
 			choice = Keyboard.keyb.nextLine();
 		} while (!choice.equalsIgnoreCase("yes") && !choice.equalsIgnoreCase("no"));
-		if (choice.equalsIgnoreCase("no")) {
-			System.out.println("You: \"I don't think I have any time to waste, I should leave right away\""
-					+ "\n\n*Your hero leaves anyway*");
-		} else {
-			System.out.println("\n*Your hero leaves Northbury*");
+		while(choice.equalsIgnoreCase("no")){
+			num++;
+			if(num >= 7){
+				System.out.println("Are you feeling it now Mr.Krabs?");
+			}else{
+				System.out.println("How about now?");				
+			}
+			choice = Keyboard.keyb.nextLine();
 		}
+		System.out.println("\n*Your hero leaves Northbury*");
 		System.out.println(rooms[0]);
 		shallWeProceed();
 		if (choice.equalsIgnoreCase("investigate")) {
@@ -149,11 +120,13 @@ public class Main {
 		do {
 			System.out.println(rooms[1]);
 			choice = Keyboard.keyb.nextLine();
-		} while (!choice.equalsIgnoreCase("Shadow Cavern") && !choice.equalsIgnoreCase("Starlight Path"));
+		} while (!choice.equalsIgnoreCase("Shadow Cavern") && !choice.equalsIgnoreCase("Starlight Path") && !choice.equalsIgnoreCase("Cheat"));
 		if (choice.equalsIgnoreCase("shadow cavern")) {
 			headToShadowCavern();
-		} else {
+		} else if(choice.equalsIgnoreCase("starlight path")) {
 			headToStarlightPath();
+		} else {
+			runTheFinalStretch();
 		}
 	}
 
@@ -166,12 +139,12 @@ public class Main {
 		System.out.println(rooms[15]);
 		shallWeProceed();
 		if (choice.equalsIgnoreCase("investigate")) {
+			System.out.println(rooms[16]);
+			getItem();
 			do {
-				System.out.println(rooms[16]);
-				getItem();
 				System.out.println("\nShould we adventure \"further\" out or \"continue\" on with our quest?");
 				choice = Keyboard.keyb.nextLine();
-			} while (!choice.equalsIgnoreCase("proceed") && !choice.equalsIgnoreCase("further"));
+			} while (!choice.equalsIgnoreCase("continue") && !choice.equalsIgnoreCase("further"));
 			if (choice.equalsIgnoreCase("further")) {
 				System.out.println(rooms[17]);
 				neMe.name = "Reptilian Humanoid";
@@ -181,16 +154,16 @@ public class Main {
 				neMe.damage = (int) (Math.random() * (1.5 * 2) + 2);
 				neMe.money = false;
 				Character.commenceBattle(neMe, p);
-				System.out.println("\nThere may be more enemies further ahead. You decide to head back the trail and"
-						+ "\ncontinue on with your quest");
+				System.out.println("\nThere may be more enemies further ahead "
+						+ "\nYou decide to head back the trail and continue on with your quest\n");
 			}
 		}
 		System.out.println(rooms[18]);
 		neMe.name = "Giant";
 		neMe.basicAbility = "Smash";
 		neMe.level = 5;
-		neMe.health = (int) (Math.random() * (1.5 * 3) + 7);
-		neMe.damage = (int) (Math.random() * (1.5 * 2) + 3);
+		neMe.health = (int) (Math.random() * (1.5 * 3) + 9);
+		neMe.damage = (int) (Math.random() * (1.5 * 2) + 4);
 		neMe.money = false;
 		Character.commenceBattle(neMe, p);
 		System.out.println(rooms[19]);
@@ -204,7 +177,7 @@ public class Main {
 						+ rooms[20]);
 		neMe.name = "Ghost";
 		neMe.basicAbility = "Play mate";
-		neMe.level = 13;
+		neMe.level = 7;
 		neMe.health = (int) (Math.random() * (1.5 * 2) + 14);
 		neMe.damage = (int) (Math.random() * (1.5 * 2) + 1);
 		neMe.money = false;
@@ -221,9 +194,9 @@ public class Main {
 		System.out.println(rooms[22]);
 		neMe.name = "Zombie";
 		neMe.basicAbility = "BRAIIINSS";
-		neMe.level = 15;
-		neMe.health = (int) (Math.random() * (1.5 * 2) + 5);
-		neMe.damage = (int) (Math.random() * (1.5 * 2) + 9);
+		neMe.level = 8;
+		neMe.health = (int) (Math.random() * (1.5 * 2) + 16);
+		neMe.damage = (int) (Math.random() * (1.5 * 2) + 8);
 		neMe.money = true;
 		Character.commenceBattle(neMe, p);
 		System.out.println(rooms[23]);
@@ -235,9 +208,9 @@ public class Main {
 		System.out.println(rooms[24]);
 		neMe.name = "Skeleton Warrior";
 		neMe.basicAbility = "Breaking Bones";
-		neMe.level = 16;
-		neMe.health = (int) (Math.random() * (1.5 * 3) + 4);
-		neMe.damage = (int) (Math.random() * (1.5 * 2) + 18);
+		neMe.level = 10;
+		neMe.health = (int) (Math.random() * (1.5 * 3) + 15);
+		neMe.damage = (int) (Math.random() * (1.5 * 2) + 15);
 		neMe.money = true;
 		Character.commenceBattle(neMe, p);
 		runTheFinalStretch();
@@ -256,9 +229,9 @@ public class Main {
 		neMe.name = "Dwarf";
 		neMe.basicAbility = "Punch";
 		neMe.money = true;
-		neMe.level = 1;
-		neMe.health = (int) (Math.random() * (1.5 * 3) + 2);
-		neMe.damage = (int) (Math.random() * (1.5 * 2) + 1);
+		neMe.level = 3;
+		neMe.health = (int) (Math.random() * (1.5 * 3) + 5);
+		neMe.damage = (int) (Math.random() * (1.5 * 2) + 2);
 		Character.commenceBattle(neMe, p);
 		System.out.println(rooms[4]);
 		shallWeProceed();
@@ -267,12 +240,12 @@ public class Main {
 			System.out.println("You look around but it is too hard to see anything so you proceed");
 		}
 		System.out.println(rooms[5]);
-		neMe.level = 2;
+		neMe.level = 4;
 		neMe.money = true;
 		neMe.name = "Giant Rat";
 		neMe.basicAbility = "Bite";
-		neMe.damage = (int) (Math.random() * (1.5 * 2) + 3);
-		neMe.health = (int) (Math.random() * (1.5 * 3) + 4);
+		neMe.damage = (int) (Math.random() * (1.5 * 2) + 5);
+		neMe.health = (int) (Math.random() * (1.5 * 3) + 6);
 		Character.commenceBattle(neMe, p);
 		System.out.println(rooms[6]);
 		shallWeProceed();
@@ -375,21 +348,74 @@ public class Main {
 		neMe.name = "Guard";
 		neMe.basicAbility = "Spear thrust";
 		neMe.level = 18;
-		neMe.health = (int) (Math.random() * (1.5 * 3) + 18);
-		neMe.damage = (int) (Math.random() * (1.5 * 2) + 7);
+		neMe.health = (int) (Math.random() * (1.5 * 10) + 40);
+		neMe.damage = (int) (Math.random() * (1.5 * 7) + 15);
 		neMe.money = true;
 		Character.commenceBattle(neMe, p);
 		System.out.println(rooms[29]);
 		hitEnter();
-		do{
+		do {
 			System.out.println(rooms[30]);
 			choice = Keyboard.keyb.nextLine();
-		}while(!choice.equalsIgnoreCase("boss") && !choice.equalsIgnoreCase("door"));
-		if(choice.equalsIgnoreCase("door")){
+		} while (!choice.equalsIgnoreCase("boss") && !choice.equalsIgnoreCase("door"));
+		if (choice.equalsIgnoreCase("door")) {
 			System.out.println(rooms[31]);
 			getItem();
 		}
-		// TODO: the rest
+		System.out.println(rooms[31]);
+		hitEnter();
+		int j = 11;
+		for (int i = 0; i < 3; i++) {
+			System.out.println(pages[j]);
+			j++;
+			hitEnter();
+		}
+		System.out.println(pages[14]);
+		neMe.name = "Guard";
+		neMe.basicAbility = "Sword Swing";
+		neMe.level = 22;
+		neMe.health = (int) (Math.random() * (1.5 * 10) + 50);
+		neMe.damage = (int) (Math.random() * (1.5 * 2) + 20);
+		neMe.money = false;
+		Character.commenceBattle(neMe, p);
+		System.out.println(pages[15]);
+		hitEnter();
+		System.out.println(rooms[33]);
+		hitEnter();
+		System.out.println(rooms[34]);
+		while (!choice.equalsIgnoreCase("Kill") && !choice.equalsIgnoreCase("Mercy")) {
+			System.out.println("Should we \"kill\" Jack-E or show \"Mercy\"?");
+			choice = Keyboard.keyb.nextLine();
+		}
+		if (choice.equalsIgnoreCase("kill")) {
+			neMe.name = "Jack-E";
+			neMe.basicAbility = "Slap";
+			neMe.level = 0;
+			neMe.health = (int) (Math.random() * (1.5 * 70) + 290);
+			neMe.damage = (int) (Math.random() * 2);
+			neMe.money = false;
+			Character.commenceBattle(neMe, p);
+			System.out.println(rooms[17]);
+			
+		}else{
+			System.out.println(rooms[16]);
+		}
+		System.out.println(rooms[35]);
+		shallWeProceed();
+		if(choice.equalsIgnoreCase("investigate")){
+			System.out.println(rooms[36]);
+			hitEnter();
+			System.out.println("After the amazing session, you return to the hallway.\n");
+		}
+		System.out.println(rooms[37]);
+		neMe.name = "Prison Guard";
+		neMe.basicAbility = "Shackle Whip";
+		neMe.level = 25;
+		neMe.health = (int) (Math.random() * (1.5 * 30) + 70);
+		neMe.damage = (int) (Math.random() * (1.5 * 20) + 10);
+		neMe.money = false;
+		Character.commenceBattle(neMe, p);
+		Character.endGame(p);
 	}
 
 	/**
@@ -437,6 +463,19 @@ public class Main {
 		pages[9] = new Page("\"Move aside, let me through!\"" + "\n\n\"Over my dead body!\"\n-Guard"
 				+ "\n\n\"That can be arranged\"");
 		pages[10] = new Page("\n=====\nFINAL\n=====");
+		pages[11] = new Page("\"How long have you served your?\"\n-Guard\n\n\"I haven't completed my training\"");
+		pages[12] = new Page("\n\"That is impossible! How could you make it this far?\"\n-Guard"
+				+ "\n\n\"Maybe you guys are too weak! Ahahaha\""
+				+ "\n\n\"You won't be able to get any further!\"\n-Guard");
+		pages[13] = new Page("\"I need to save the princess, move out of my way!\""
+				+ "\n\n\"The Princess is in our possesion, be gone before you regret this!\"\n-Guard");
+		pages[14] = new Page("\"Don't make me use force!\""
+				+ "\n\n\"Ahaha... Don't make me laugh! You don't have any experience. You being here is clearly a fluke! I have been serving\nJack-E for decades! I am respected for being a great warrior! I will protect him with my life\"\n-Guard");
+		pages[15] = new Page("\n\"This must be a mistake! I could never lose to the likes of you!\"\n-Guard"
+				+ "\n\nYou ignore the guard and leave him to die a slow death");
+		pages[16] = new Page("You leave the Jack-E alone and continue past him to the next room");
+		pages[17] = new Page("You killed Jack-E! He wasn't worth much but I guess you got bragging rights!"
+				+ "\n\nYou proceed to the next room");
 		// Rooms
 		rooms[0] = new Room("You are now in the woods outside your town following the footprints left behind. ");
 		// First fork in the road
@@ -508,19 +547,65 @@ public class Main {
 		rooms[28] = new Room("You approach the front gates of the castle \n\n\"Who goes there?!\"\n-Guard");
 		rooms[29] = new Room("The guard has been defeated and you have made your way into the castle"
 				+ "\nAfter wondering around for a while you realize you are comepletely lost...");
-		rooms[30] = new Room("You eventually come across two doors. Should we go through the \"Boss\" room, or go through the other \"door\"?");
-		rooms[31] = new Room("You find yourself in the storage room. The storage rooms is quite empty but you"
-				+ "\nstill take whatever you find useful and head towards the boss's throne room");
-		rooms[32] = new Room("");
-		rooms[33] = new Room("");
-		rooms[34] = new Room("");
-		rooms[35] = new Room("");
-		rooms[36] = new Room("");
-		rooms[37] = new Room("");
-		rooms[38] = new Room("");
-		rooms[39] = new Room("");
-		rooms[40] = new Room("");
-		// TODO:
+		rooms[30] = new Room(
+				"You eventually come across two doors. Should we go through the \"Boss\" room, or go through the other \"door\"?");
+		rooms[31] = new Room(
+				"You enter the storage room to find that the troll king has put everything in several chests in the room"
+						+ "\nYou look around, high and low but you only managed to find one flask."
+						+ "\nNow it is time for the main boss!");
+		rooms[32] = new Room("\nYou enter the boss room"
+				+ "\n\nThis room has no torches but, the light from the moon shines through the glass "
+				+ "\nwindows lighting up some parts of the room. Emerging from the shadows of the room, a larger guard walks out");
+		rooms[33] = new Room(
+				"Now you stand before a larger door. This must be the door to Jack-E's throne. It is almost over! Let's do this!"
+						+ "\n\nYou swing the doors open");
+		rooms[34] = new Room("There sitting on his throne, you see Jack-E. He doesn't seem so tough! "
+				+ "\n\nYou bravely walk up to his throne and point your sword at him"
+				+ "\n\n\"I came for the princess, release her NOW!\""
+				+ "\n\n\"Okay, take her! Just leave me alone! Please!!! I don't want to die! Please...\"\n-Jack-E"
+				+ "\n\nJack-E begins to sob begging for mercy");
+		rooms[35] = new Room("Past the doors, there is a long dark hallway... It makes you feel uneasy, but you still go down the hallway.");
+		rooms[36] = new Room("As you walked down the hallway, you hit a brick that triggered a hidden door!"
+				+ "\nYou enter the room only to find an octopus doing gymnastic on a balance beam."
+				+ "\n\n\"Well this is awkward\""
+				+ "\n\nYou decide to join the octopus in some gymnastics before returning to your quest");
+		rooms[37] = new Room("You enter the room to find the princess caged up and hung in the center of the room. As you approach the Princess, she points behind you!"
+				+ "\nYou quickly turn around and catch the stone being flung at you. A disfigured creature comes out fromt he shadows.");
 	}
 
+	/**
+	 * Forces the user to interact Proceeds as long as the user hits enter
+	 */
+	public static void hitEnter() {
+		System.out.println("\n-Hit Enter to Continue-");
+		Keyboard.keyb.nextLine();
+	}
+
+	/**
+	 * If user decides to proceed or investigate
+	 */
+	static void shallWeProceed() {
+		do {
+			System.out.println("Should we \"proceed\" or \"investigate\"?");
+			choice = Keyboard.keyb.nextLine();
+		} while (!choice.equalsIgnoreCase("Proceed") && !choice.equalsIgnoreCase("Investigate"));
+	}
+
+	static void getItem() {
+		int temp = (int) (Math.random() * 2 + 1);
+		if (temp == 1) {
+			p.inventory.add(new Item("Potion"));
+			System.out.println("\nYou have obtained:\n+1 Potion\n");
+		} else if (temp == 2) {
+			p.inventory.add(new Item("Super Potion"));
+			System.out.println("\nYou have obtained:\n+1 Super Potion\n");
+		} else if (temp == 3) {
+			p.inventory.add(new Item("Paralyze Antidote"));
+			System.out.println("\nYou have obtained:\n+1 Paralyze Antidote\n");
+		} else if (temp == 4) {
+			p.inventory.add(new Item("Poison Antidote"));
+			System.out.println("\nYou have obtained:\n+1 Poison Antidote\n");
+		}
+		System.out.println(p.inventory);
+	}
 }

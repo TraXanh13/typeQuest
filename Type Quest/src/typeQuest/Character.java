@@ -123,17 +123,6 @@ public class Character {
 			}
 		}
 
-		/*
-		 * Item temp = this.getFirstItem(); if (temp == null) { // Nothing
-		 * happens if inventory is empty } else if
-		 * (temp.getType().equalsIgnoreCase(type)) { // Replaces the first item
-		 * with the second item this.setFirstItem(temp.getNextItem()); } else {
-		 * // If the first item isn't what we were looking for while
-		 * (temp.getNextItem() != null) { // Loops as long as next item exists
-		 * if (temp.getNextItem().getType().equalsIgnoreCase(type)) {
-		 * temp.setNextItem(temp.getNextItem().getNextItem()); break; } else {
-		 * // Move to the next item temp = temp.getNextItem(); } } }
-		 */
 	}
 
 	public Item getFirstItem() {
@@ -147,7 +136,7 @@ public class Character {
 	static void endGame(Player p) {
 		if (p.health > 0) {
 			System.out.println(
-					"You took the key off the prison guard and released the \nprincess from her cell.  You and the Princess return to Northbury.\n-End-");
+					"You took the key off the prison guard and released the \nprincess from her cell.  You and the Princess return to Northbury\n-End-");
 			System.exit(0);
 		} else {
 			System.out.println("You have died... You let us down...");
